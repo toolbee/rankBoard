@@ -1,0 +1,86 @@
+.portfolio figure h2 {
+  word-spacing: -0.15em;
+  font-weight: 800;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1em 1.2em;
+  font-size: 16px;
+
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-40px, 0, 0);
+  transform: translate3d(-40px, 0, 0);
+}
+.portfolio figure h2,
+.portfolio figure p {
+  margin: 0;
+}
+.portfolio figure p {
+  padding: 0 10px 0 0;
+  width: 40%;
+  border-right: 1px solid #fff;
+  text-align: right;
+ /* opacity: 0;*/
+  /*-webkit-transition: opascity 0.35s, -webkit-transform 0.35s;*/
+  /*transition: opacity 0.35s, transform 0.35s;*/
+  /*-webkit-transform: translate3d(-40px, 0, 0);*/
+  /*transform: translate3d(-40px, 0, 0);*/
+  /*letter-spacing: 1px;*/
+  font-size: 16px;
+}
+.portfolio figure:hover img {
+  opacity: 0.5;
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+}
+.portfolio figure:hover p {
+ /* opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);*/
+}
+
+.portfolio figure:hover h2 {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0 , 0px, 0px);
+}
+
+
+/*버튼 효과*/
+.category p {
+  word-spacing: -0.15em;
+  font-weight: 800;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 1em 1.2em;
+  /*font-size: 16px;*/
+}
+.category p {
+  margin: 0;
+}
+.category p {
+  padding: 0 10px 0 0;
+  width: 50%;
+  border-right: 1px solid #fff;
+  text-align: right;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-40px, 0, 0);
+  transform: translate3d(-40px, 0, 0);
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+.theme_category button:hover img {
+  opacity: 0.5;
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+}
+.theme_category button:hover p {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
