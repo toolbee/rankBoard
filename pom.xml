@@ -10,8 +10,9 @@
 	</parent>
 	<groupId>com.rankBoard</groupId>
 	<artifactId>rankBoard</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<!-- <packaging>jar</packaging> -->
+	<packaging>war</packaging>
 	<name>rankBoard</name>
 	<description>Rank board project for Spring Boot</description>
 
