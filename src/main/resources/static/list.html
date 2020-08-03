@@ -16,23 +16,88 @@
 	<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<script src="javascript/pace.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- amchart 4 -->
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
 
 	<style type="text/css">
-		
 		section.about img {
-			width: 100px;
-			height: 100px;
+			width: 120px;
+			height: 120px;
+		}
+		div.pieChartDiv {
+			font-size: 13px;
 		}
 	</style>
 </head>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	var recordArr = [
+		[{record:'win', value:0}, {record:'lose', value:3}]
+		, [{record:'win', value:2}, {record:'lose', value:1}]
+		, [{record:'win', value:0}, {record:'lose', value:0}]
+		, [{record:'win', value:2}, {record:'lose', value:0}]
+		, [{record:'win', value:3}, {record:'lose', value:2}]
+		, [{record:'win', value:0}, {record:'lose', value:2}]
+		, [{record:'win', value:0}, {record:'lose', value:0}]
+	];
+	
+	for(var i=0; i<7; i++) {
+		drawCharts(recordArr[i], i)
+	}
+})
+	
+function drawCharts(record, i) {
+	<!-- Chart code -->
+	// Themes begin
+	am4core.useTheme(am4themes_animated);
+	//am4core.useTheme(am4themes_kelly);
+	// Themes end
+	
+	var chart = am4core.create("recordChart_"+i, am4charts.PieChart);
+	chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+	
+	chart.data = record;
+	chart.radius = am4core.percent(70);
+	chart.innerRadius = am4core.percent(40);
+	chart.startAngle = 180;
+	chart.endAngle = 360;  
+	
+	var series = chart.series.push(new am4charts.PieSeries());
+	series.dataFields.value = "value";
+	series.dataFields.category = "record";
+	
+	series.slices.template.cornerRadius = 10;
+	series.slices.template.innerCornerRadius = 7;
+	series.slices.template.draggable = true;
+	series.slices.template.inert = true;
+	series.labels.template.disabled = true;
+	
+	series.hiddenState.properties.startAngle = 90;
+	series.hiddenState.properties.endAngle = 90;
+	
+	series.colors.list = [
+		  am4core.color("green"),
+		  am4core.color("#FF9671"),
+	];
+	chart.legend = new am4charts.Legend();
+
+}
+
+</script>
 <body>
 	<header>
 		<div class="container hidden-xs ">
-			<a href="index.html" style="text-decoration: none; ">
-				<!-- <img class="img-responsive" src="images/logos/logo.png" alt="Logo" /> -->
-				<h1>Rank & Achievement</h1>
-			</a>
+			<h1>
+				<a href="index.html" style="text-decoration: none; ">
+					<!-- <img class="img-responsive" src="images/logos/logo.png" alt="Logo" /> -->
+					Rank & Achievement
+				</a>
+			</h1>
 		</div>
 		<div class="navbar-wrapper">
 			<div class="container">
@@ -96,128 +161,307 @@
 								<p class="text-center">끝 없는 전투 속에 남은 것은 승리뿐.</p>
 							</div>
 						</div>
-
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
-								<img src="images/culture.png" alt="">
+							<div class="col-sm-3 col-md-3 text-center">
+								<img src="images/profile/pht.jpg" alt="">
+								<div class="name">박현택</div><div class="nickname">kncpht</div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">박현택</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Protoss</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">-</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>[Bisu]_choijh</span> : <span>0승 3패</span></div>
+										<div class="rivalry title">Vs. <span>FC_KEKE</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span></span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_0" class="pieChartDiv"></div>
 							</div>
 						</div>
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
+							<div class="col-sm-3 col-md-3 text-center">
 								<img src="images/profile/bjh.png" alt="">
+								<div class="name">변지훈</div><div class="nickname">Toolbee</div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">변지훈</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Protoss</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">6승 7패</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>General Hwang</span> : <span>2승 0패</span></div>
+										<div class="rivalry title">Vs. <span>[Bisu]_choijh</span> : <span>0승 1패</span></div>
+										<div class="rivalry title">Vs. <span>stygj</span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_1" class="pieChartDiv"></div>
 							</div>
 						</div>
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
-								<img src="images/culture.png" alt="">
+							<div class="col-sm-3 col-md-3 text-center">
+								<img src="images/profile/ygj.jpg" alt="">
+								<div class="name">윤기정</div><div class="nickname">stygj</div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">윤기정</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Terran</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">-</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>황은상</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span>General Hwang</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span>Toolbee</span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_2" class="pieChartDiv"></div>
 							</div>
 						</div>
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
+							<div class="col-sm-3 col-md-3 text-center">
 								<img src="images/profile/lku.png" alt="">
+								<div class="name">이강욱</div><div class="nickname">FC_KEKE</div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">이강욱</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Zerg</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">-</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>[Bisu]_choijh</span> : <span>2승 0패</span></div>
+										<div class="rivalry title">Vs. <span>kncpht</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span></span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_3" class="pieChartDiv"></div>
 							</div>
 						</div>
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
+							<div class="col-sm-3 col-md-3 text-center">
 								<img src="images/profile/cjh.jpg" alt="">
+								<div class="name">최정호</div><div class="nickname">[BISU]_choijh</div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">최정호</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Protoss</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">-</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>FC_KEKE</span> : <span>0승 2패</span></div>
+										<div class="rivalry title">Vs. <span>kncpht</span> : <span>3승 0패</span></div>
+										<div class="rivalry title">Vs. <span></span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_4" class="pieChartDiv"></div>
 							</div>
 						</div>
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
+							<div class="col-sm-3 col-md-3 text-center">
 								<img src="images/profile/hsc.jpg" alt="">
+								<div class="name">황선철</div><div class="nickname">General Hwang</div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">황선철</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Protoss</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">-</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>Toolbee</span> : <span>0승 2패</span></div>
+										<div class="rivalry title">Vs. <span>stygj</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span>황은상</span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_5" class="pieChartDiv"></div>
 							</div>
 						</div>
 						<div class="row member animateOnScroll" data-animation="fadeInRight">
-							<div class="col-sm-4 col-md-3 text-center">
-								<img src="images/culture.png" alt="">
+							<div class="col-sm-3 col-md-3 text-center">
+								<img src="images/profile/esh.jpg" alt="">
+								<div class="name">황은상</div><div class="nickname"></div>
 							</div>
-							<div class="col-sm-2 col-md-3">
-								<div class="name">황은상</div>
-								<div class="title">Member</div>
-								<div class="team">Team A</div>
-								<div class="tribe">Protoss</div>
+							<div class="col-sm-2 col-md-2">
+								<ul>
+									<li>
+										<div class="title">소속팀</div>
+										<div class="team">Team A</div>
+									</li>
+									<li>
+										<div class="title">주종족</div>
+										<div class="tribe">Protoss</div>
+									</li>
+									<li>
+										<div class="title">총 스코어</div>
+										<div class="totalScore">-</div>	
+									</li>
+								</ul>
 							</div>
 							<div class="col-sm-4 col-md-4">
-								<div class="score">Total Score</div>
-								<div class="vsZ title">Vs. Zerg</div>
-								<div class="vsT title">Vs. Terran</div>
-								<div class="vsP title">Vs. Protoss</div>
+								<ul>
+									<li>
+										<div class="title">팀전 스코어</div>
+										<div class="teamScore">-</div>
+									</li> 
+									<li>
+										<div class="title">개인전 스코어</div>
+										<div class="teamScore">-</div>
+									</li>
+									<li>
+										<div class="title">주요 라이벌전</div>
+										<div class="rivalry title">Vs. <span>General Hwang</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span>Toolbee</span> : <span>0승 0패</span></div>
+										<div class="rivalry title">Vs. <span>stygj</span> : <span>0승 0패</span></div>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-3 col-md-3">
+								<div id="recordChart_6" class="pieChartDiv"></div>
 							</div>
 						</div>
-					
-
 					</section>
 				</article>
 
@@ -232,10 +476,10 @@
 				<div class="row-xs-12">
 					<div class="divider"></div>
 					<div class="text-center">
-						<a href="index.html" style="text-decoration: none; ">
-							<!-- <img src="images/logos/logo.png" alt="" class="logo"> -->
-							<h3>Rank & Achievement</h3>
-						</a>
+						<h3>
+							<a href="index.html" style="text-decoration: none; ">Rank & Achievement</a>
+								<!-- <img src="images/logos/logo.png" alt="" class="logo"> -->
+						</h3>
 					</div>
 				</div>
 			</div>
