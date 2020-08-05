@@ -52,10 +52,91 @@ $(document).ready(function() {
 	];
 	
 	for(var i=0; i<7; i++) {
-		drawCharts(recordArr[i], i)
+		//차트 그리기
+		drawCharts(recordArr[i], i);
+	}
+	
+	var playersJSON = players["players"];
+	for player in playersJSON {
+		//게시판 만들기
+		makeBoard(player);
 	}
 })
 	
+function makeBoard(player) {
+	var html;
+	
+	//기록 넣기
+	html = drawRecord(html, player);
+	
+	//차트 그리기
+	html = drawChart(html, player);
+}
+
+function drawRecord(html, player) {
+	html = '<div class="row member animateOnScroll" data-animation="fadeInRight">';
+	html.append('<div class="col-sm-3 col-md-3 text-center">');
+	html.append('<img src="images/profile/' + player["photo"] + ' alt="">');
+	html.append('<div class="name">' + player["name"] + '</div>');
+	html.append('<div class="nickname">' + player["nickname"] + '</div>');
+	html.append('</div>');
+	html.append('<div class="col-sm-2 col-md-2"><ul>');
+	html.append('<li><div class="title">소속팀</div><div class="team">' + player["team"] + '</div></li>');
+	html.append('<li><div class="title">주종족</div><div class="tribe">' + player["tribe"] + '</div></li>');
+	html.append('<li><div class="title">총 스코어</div>	<div class="totalScore">-</div></li>');
+	html.append('</ul></div>');
+	html.append('<div class="col-sm-4 col-md-4"><ul>');
+	html.append('<li><div class="title">팀전 전적</div><div class="teamScore">' + player["teamMatch"] + '</div></li>');
+	html.append('<li><div class="title">개인전 스코어</div><div class="teamScore">-</div></li>');
+	html.append('<li>');
+	html.append('<div class="title">주요 라이벌전</div>');
+	html.append('<div class="rivalry title">Vs. <span>' + player["rival"] + '</span> : <span>' + player["win"] + '승 ' + player["lose"] + '패</span></div>');
+	html.append('</li>');
+	html.append('</ul></div>');
+	html.append('<div class="col-sm-3 col-md-3"><div id="recordChart_' + player["seq"] + ' class="pieChartDiv"></div></div></div>');
+
+	return html;
+}
+
+function drawChart(html, player) {
+	
+	<!-- Chart code -->
+	// Themes begin
+	am4core.useTheme(am4themes_animated);
+	//am4core.useTheme(am4themes_kelly);
+	// Themes end
+	
+	var chart = am4core.create("recordChart_"+player["seq"], am4charts.PieChart);
+	chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+	
+	chart.data = record;
+	chart.radius = am4core.percent(70);
+	chart.innerRadius = am4core.percent(40);
+	chart.startAngle = 180;
+	chart.endAngle = 360;  
+	
+	var series = chart.series.push(new am4charts.PieSeries());
+	series.dataFields.value = "value";
+	series.dataFields.category = "record";
+	
+	series.slices.template.cornerRadius = 10;
+	series.slices.template.innerCornerRadius = 7;
+	series.slices.template.draggable = true;
+	series.slices.template.inert = true;
+	series.labels.template.disabled = true;
+	
+	series.hiddenState.properties.startAngle = 90;
+	series.hiddenState.properties.endAngle = 90;
+	
+	series.colors.list = [
+		  am4core.color("green"),
+		  am4core.color("#FF9671"),
+	];
+	chart.legend = new am4charts.Legend();
+
+	return html;
+}
+
 function drawCharts(record, i) {
 	<!-- Chart code -->
 	// Themes begin

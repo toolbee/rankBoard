@@ -6,8 +6,10 @@
 var players = '{
 	"players":[
 		{
+			"seq":0,
 			"name":"박현택",
 			"nickname":"kncpht",
+			"photo":"pht-square.png",
 			"tribe":"Protoss",
 			"team":["챗봇팀"],
 			"teamMatch":[
@@ -27,8 +29,10 @@ var players = '{
 			]
 		}, 
 		{
+			"seq":1,
 			"name":"변지훈",
 			"nickname":"Toolbee",
+			"photo":"bjh.png",
 			"tribe":"Protoss",
 			"team":["서울팀", "사무실팀", "챗봇팀"],
 			"teamMatch":[
@@ -65,8 +69,10 @@ var players = '{
 			]
 		}, 
 		{
+			"seq":2,
 			"name":"윤기정",
 			"nickname":"stygj",
+			"photo":"ygj-square.png",
 			"tribe":"Terran",
 			"team":["서울팀"],
 			"teamMatch":[
@@ -96,8 +102,10 @@ var players = '{
 			]
 		}, 
 		{
+			"seq":3,
 			"name":"이강욱",
 			"nickname":"FC_KEKE",
+			"photo":"lku-square.png",
 			"tribe":"Zerg",
 			"team":["광명팀", "사무실팀"],
 			"teamMatch":[
@@ -126,9 +134,12 @@ var players = '{
 					"lose":0
 				}
 			]
-		}, {
+		}, 
+		{
+			"seq":4,
 			"name":"최정호",
 			"nickname":"[BISU]_choijh",
+			"photo":"cjh-square.png",
 			"tribe":"Protoss",
 			"team":["서울팀", "제주팀"],
 			"teamMatch":[
@@ -167,9 +178,12 @@ var players = '{
 					"lose":0
 				}
 			]
-		}, {
+		}, 
+		{
+			"seq":5,
 			"name":"황선철",
 			"nickname":"General Hwang",
+			"photo":"hsc-square.png",
 			"tribe":"Protoss",
 			"team":["광명팀", "제주팀"],
 			"teamMatch":[
@@ -203,9 +217,12 @@ var players = '{
 					"lose":2
 				}
 			]
-		}, {
+		}, 
+		{
+			"seq":6,
 			"name":"황은상",
 			"nickname":"황은상",
+			"photo":"hes-square.png",
 			"tribe":"Protoss",
 			"team":["서울팀"],
 			"teamMatch":[
