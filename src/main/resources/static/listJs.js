@@ -3,44 +3,271 @@
  * listJs
  */
 
-<!-- Chart code -->
-am4core.ready(function() {
-
-	// Themes begin
-	am4core.useTheme(am4themes_animated);
-	// Themes end
-	
-	var chart = am4core.create("recordChart", am4charts.PieChart);
-	chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-	
-	chart.data = [
+var players = '{
+	"players":[
 		{
-	    	record: "win",
-	    	value: 3
-	  	},
-	  	{
-	    	record: "lose",
-	    	value: 2
-	  	},
-	];
-	chart.radius = am4core.percent(70);
-	chart.innerRadius = am4core.percent(40);
-	chart.startAngle = 180;
-	chart.endAngle = 360;  
+			"seq":0,
+			"name":"박현택",
+			"nickname":"kncpht",
+			"photo":"pht-square.png",
+			"tribe":"Protoss",
+			"team":["챗봇팀"],
+			"teamMatch":[
+				{
+					"myTeam":"챗봇팀",
+					"opposeTeam":"제주팀",
+					"win":1,
+					"lose":4
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"[BISU]_choijh",
+					"win":0,
+					"lose":2
+				}
+			]
+		}, 
+		{
+			"seq":1,
+			"name":"변지훈",
+			"nickname":"Toolbee",
+			"photo":"bjh.png",
+			"tribe":"Protoss",
+			"team":["서울팀", "사무실팀", "챗봇팀"],
+			"teamMatch":[
+				{
+					"myTeam":"서울팀",
+					"opposeTeam":"광명팀",
+					"win":2,
+					"lose":2
+				},
+				{
+					"myTeam":"사무실팀",
+					"opposeTeam":"제주팀",
+					"win":4,
+					"lose":0
+				},
+				{
+					"myTeam":"챗봇팀",
+					"opposeTeam":"제주팀",
+					"win":4,
+					"lose":0
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"General Hwang",
+					"win":2,
+					"lose":0
+				}, 
+				{
+					"rival":"[BISU]_choijh",
+					"win":0,
+					"lose":1
+				}
+			]
+		}, 
+		{
+			"seq":2,
+			"name":"윤기정",
+			"nickname":"stygj",
+			"photo":"ygj-square.png",
+			"tribe":"Terran",
+			"team":["서울팀"],
+			"teamMatch":[
+				{
+					"myTeam":"",
+					"opposeTeam":"",
+					"win":0,
+					"lose":0
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"General Hwang",
+					"win":0,
+					"lose":0
+				}, 
+				{
+					"rival":"황은상",
+					"win":0,
+					"lose":0
+				},
+				{
+					"rival":"Toolbee",
+					"win":0,
+					"lose":0
+				}
+			]
+		}, 
+		{
+			"seq":3,
+			"name":"이강욱",
+			"nickname":"FC_KEKE",
+			"photo":"lku-square.png",
+			"tribe":"Zerg",
+			"team":["광명팀", "사무실팀"],
+			"teamMatch":[
+				{
+					"myTeam":"광명팀",
+					"opposeTeam":"서울팀",
+					"win":2,
+					"lose":2
+				},
+				{
+					"myTeam":"사무실팀",
+					"opposeTeam":"제주팀",
+					"win":4,
+					"lose":0
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"[BISU]_choijh",
+					"win":3,
+					"lose":0
+				},
+				{
+					"rival":"General Hwang",
+					"win":2,
+					"lose":0
+				}
+			]
+		}, 
+		{
+			"seq":4,
+			"name":"최정호",
+			"nickname":"[BISU]_choijh",
+			"photo":"cjh-square.png",
+			"tribe":"Protoss",
+			"team":["서울팀", "제주팀"],
+			"teamMatch":[
+				{
+					"myTeam":"서울팀",
+					"opposeTeam":"광명팀",
+					"win":2,
+					"lose":2
+				},
+				{
+					"myTeam":"제주팀",
+					"opposeTeam":"사무실팀",
+					"win":0,
+					"lose":4
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"FC_KEKE",
+					"win":0,
+					"lose":3
+				},
+				{
+					"rival":"kncpht",
+					"win":2,
+					"lose":0
+				},
+				{
+					"rival":"General Hwang",
+					"win":2,
+					"lose":0
+				},
+				{
+					"rival":"Toolbee",
+					"win":1,
+					"lose":0
+				}
+			]
+		}, 
+		{
+			"seq":5,
+			"name":"황선철",
+			"nickname":"General Hwang",
+			"photo":"hsc-square.png",
+			"tribe":"Protoss",
+			"team":["광명팀", "제주팀"],
+			"teamMatch":[
+				{
+					"myTeam":"광명팀",
+					"opposeTeam":"서울팀",
+					"win":2,
+					"lose":2
+				},
+				{
+					"myTeam":"제주팀",
+					"opposeTeam":"사무실팀",
+					"win":0,
+					"lose":4
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"FC_KEKE",
+					"win":0,
+					"lose":2
+				}, 
+				{
+					"rival":"[BISU]_choijh",
+					"win":0,
+					"lose":2
+				},
+				{
+					"rival":"Toolbee",
+					"win":0,
+					"lose":2
+				}
+			]
+		}, 
+		{
+			"seq":6,
+			"name":"황은상",
+			"nickname":"황은상",
+			"photo":"hes-square.png",
+			"tribe":"Protoss",
+			"team":["서울팀"],
+			"teamMatch":[
+				{
+					"myTeam":"",
+					"opposeTeam":"",
+					"win":0,
+					"lose":0
+				}
+			],
+			"rivalry":[
+				{
+					"rival":"General Hwang",
+					"win":0,
+					"lose":0
+				}, 
+				{
+					"rival":"stygj",
+					"win":0,
+					"lose":0
+				},
+				{
+					"rival":"Toolbee",
+					"win":0,
+					"lose":0
+				}
+			]
+		}
+	]
+}' 
 	
-	var series = chart.series.push(new am4charts.PieSeries());
-	series.dataFields.value = "value";
-	series.dataFields.category = "record";
-	
-	series.slices.template.cornerRadius = 10;
-	series.slices.template.innerCornerRadius = 7;
-	series.slices.template.draggable = true;
-	series.slices.template.inert = true;
-	series.alignLabels = false;
-	
-	series.hiddenState.properties.startAngle = 90;
-	series.hiddenState.properties.endAngle = 90;
-	
-	chart.legend = new am4charts.Legend();
-
-}); // end am4core.ready()
+var sampleRecord = '{
+	"name":"변지훈",
+	"nickname":"Toolbee",
+	"team":["서울팀"],
+	"tribe":"Protoss",
+	"rivalry":[
+		{
+			"rival":"General Hwang",
+			"win":2,
+			"lose":0
+		}, {
+			"rival":"[BISU]_choijh",
+			"win":0,
+			"lose":1
+		}
+	]
+}';
