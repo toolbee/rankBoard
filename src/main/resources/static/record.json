@@ -1,9 +1,4 @@
-/**
- * rankBoard
- * listJs
- */
-
-var players = '{
+{
 	"players":[
 		{
 			"seq":0,
@@ -38,7 +33,7 @@ var players = '{
 			"teamMatch":[
 				{
 					"myTeam":"서울팀",
-					"opposeTeam":"광명팀",
+					"opposeTeam":"경기팀",
 					"win":2,
 					"lose":2
 				},
@@ -51,8 +46,8 @@ var players = '{
 				{
 					"myTeam":"챗봇팀",
 					"opposeTeam":"제주팀",
-					"win":4,
-					"lose":0
+					"win":1,
+					"lose":4
 				}
 			],
 			"rivalry":[
@@ -74,7 +69,7 @@ var players = '{
 			"nickname":"stygj",
 			"photo":"ygj-square.png",
 			"tribe":"Terran",
-			"team":["서울팀"],
+			"team":["사무실팀"],
 			"teamMatch":[
 				{
 					"myTeam":"",
@@ -107,10 +102,10 @@ var players = '{
 			"nickname":"FC_KEKE",
 			"photo":"lku-square.png",
 			"tribe":"Zerg",
-			"team":["광명팀", "사무실팀"],
+			"team":["경기팀", "사무실팀"],
 			"teamMatch":[
 				{
-					"myTeam":"광명팀",
+					"myTeam":"경기팀",
 					"opposeTeam":"서울팀",
 					"win":2,
 					"lose":2
@@ -145,7 +140,7 @@ var players = '{
 			"teamMatch":[
 				{
 					"myTeam":"서울팀",
-					"opposeTeam":"광명팀",
+					"opposeTeam":"경기팀",
 					"win":2,
 					"lose":2
 				},
@@ -185,10 +180,10 @@ var players = '{
 			"nickname":"General Hwang",
 			"photo":"hsc-square.png",
 			"tribe":"Protoss",
-			"team":["광명팀", "제주팀"],
+			"team":["경기팀", "제주팀"],
 			"teamMatch":[
 				{
-					"myTeam":"광명팀",
+					"myTeam":"경기팀",
 					"opposeTeam":"서울팀",
 					"win":2,
 					"lose":2
@@ -252,22 +247,5 @@ var players = '{
 			]
 		}
 	]
-}' 
+}
 	
-var sampleRecord = '{
-	"name":"변지훈",
-	"nickname":"Toolbee",
-	"team":["서울팀"],
-	"tribe":"Protoss",
-	"rivalry":[
-		{
-			"rival":"General Hwang",
-			"win":2,
-			"lose":0
-		}, {
-			"rival":"[BISU]_choijh",
-			"win":0,
-			"lose":1
-		}
-	]
-}';

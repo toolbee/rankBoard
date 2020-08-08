@@ -25,7 +25,6 @@
 	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
 
 	<!-- record data -->
-	<script src="listJs.js"></script>
 
 	<style type="text/css">
 		section.about img {
@@ -40,6 +39,9 @@
 </head>
 
 <script type="text/javascript">
+	
+var records = $.getJSON("record.json");
+
 $(document).ready(function() {
 	var recordArr = [
 		[{record:'win', value:0}, {record:'lose', value:2}] //박현택
@@ -56,44 +58,48 @@ $(document).ready(function() {
 		drawCharts(recordArr[i], i);
 	}
 	
-	var playersJSON = players["players"];
-	for player in playersJSON {
-		//게시판 만들기
-		makeBoard(player);
-	}
+	
+	makeBoard(records);
 })
 	
-function makeBoard(player) {
+//게시판 만들기
+function makeBoard(records) {
 	var html;
+	var players = records["responseJSON"]["players"];
 	
-	//기록 넣기
-	html = drawRecord(html, player);
+	for (var i=0; i<players.length; i++) {
+		
+		//기록 넣기
+		html = drawRecord(html, players[i]);
+		var myArticle = document.createElement('div');
+		myArticle.appendChild(html);
+		//차트 그리기
+		//html = drawChart(html, players[i]);
+	}
 	
-	//차트 그리기
-	html = drawChart(html, player);
 }
 
 function drawRecord(html, player) {
 	html = '<div class="row member animateOnScroll" data-animation="fadeInRight">';
-	html.append('<div class="col-sm-3 col-md-3 text-center">');
-	html.append('<img src="images/profile/' + player["photo"] + ' alt="">');
-	html.append('<div class="name">' + player["name"] + '</div>');
-	html.append('<div class="nickname">' + player["nickname"] + '</div>');
-	html.append('</div>');
-	html.append('<div class="col-sm-2 col-md-2"><ul>');
-	html.append('<li><div class="title">소속팀</div><div class="team">' + player["team"] + '</div></li>');
-	html.append('<li><div class="title">주종족</div><div class="tribe">' + player["tribe"] + '</div></li>');
-	html.append('<li><div class="title">총 스코어</div>	<div class="totalScore">-</div></li>');
-	html.append('</ul></div>');
-	html.append('<div class="col-sm-4 col-md-4"><ul>');
-	html.append('<li><div class="title">팀전 전적</div><div class="teamScore">' + player["teamMatch"] + '</div></li>');
-	html.append('<li><div class="title">개인전 스코어</div><div class="teamScore">-</div></li>');
-	html.append('<li>');
-	html.append('<div class="title">주요 라이벌전</div>');
-	html.append('<div class="rivalry title">Vs. <span>' + player["rival"] + '</span> : <span>' + player["win"] + '승 ' + player["lose"] + '패</span></div>');
-	html.append('</li>');
-	html.append('</ul></div>');
-	html.append('<div class="col-sm-3 col-md-3"><div id="recordChart_' + player["seq"] + ' class="pieChartDiv"></div></div></div>');
+	html = html + '<div class="col-sm-3 col-md-3 text-center">';
+	html = html + '<img src="images/profile/' + player["photo"] + ' alt="">';
+	html = html + '<div class="name">' + player["name"] + '</div>';
+	html = html + '<div class="nickname">' + player["nickname"] + '</div>';
+	html = html + '</div>';
+	html = html + '<div class="col-sm-2 col-md-2"><ul>';
+	html = html + '<li><div class="title">소속팀</div><div class="team">' + player["team"] + '</div></li>';
+	html = html + '<li><div class="title">주종족</div><div class="tribe">' + player["tribe"] + '</div></li>';
+	html = html + '<li><div class="title">총 스코어</div>	<div class="totalScore">-</div></li>';
+	html = html + '</ul></div>';
+	html = html + '<div class="col-sm-4 col-md-4"><ul>';
+	html = html + '<li><div class="title">팀전 전적</div><div class="teamScore">' + player["teamMatch"] + '</div></li>';
+	html = html + '<li><div class="title">개인전 스코어</div><div class="teamScore">-</div></li>';
+	html = html + '<li>';
+	html = html + '<div class="title">주요 라이벌전</div>';
+	html = html + '<div class="rivalry title">Vs. <span>' + player["rival"] + '</span> : <span>' + player["win"] + '승 ' + player["lose"] + '패</span></div>';
+	html = html + '</li>';
+	html = html + '</ul></div>';
+	html = html + '<div class="col-sm-3 col-md-3"><div id="recordChart_' + player["seq"] + ' class="pieChartDiv"></div></div></div>';
 
 	return html;
 }
