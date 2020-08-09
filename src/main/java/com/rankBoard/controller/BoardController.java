@@ -20,8 +20,8 @@ public class BoardController {
     //@ResponseStatus(value = HttpStatus.OK)
     public String list(Model model) {
 		
-//        return "list.html";
-        return null;
+        return "list.html";
+//        return null;
     }
 	
 	@RequestMapping(value = "/putLocationData", method = RequestMethod.POST)
