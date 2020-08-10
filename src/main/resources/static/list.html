@@ -44,64 +44,55 @@
 var records = $.getJSON("record.json");
 
 $(document).ready(function() {
-	var recordArr = [
-		[{record:'win', value:0}, {record:'lose', value:2}] //박현택
-		, [{record:'win', value:2}, {record:'lose', value:1}] //변지훈
-		, [{record:'win', value:0}, {record:'lose', value:0}] //윤기정
-		, [{record:'win', value:5}, {record:'lose', value:0}] //이강욱
-		, [{record:'win', value:5}, {record:'lose', value:3}] //최정호
-		, [{record:'win', value:0}, {record:'lose', value:6}] //황선철
-		, [{record:'win', value:0}, {record:'lose', value:0}] //황은상
-	];
-	
-	for(var i=0; i<7; i++) {
-		//차트 그리기
-		//drawCharts(recordArr[i], i);
-	}
-	
-	
-	makeBoard(records);
-})
-	
-	
-//게시판 만들기
-function makeBoard(records) {
 	var players = records["responseJSON"]["players"];
 	var section = document.querySelector('section');
 	
 	for (var i=0; i<players.length; i++) {
+		
+		//플레이어별 영역 만들기
 		var playerDiv = document.createElement('div');
 		playerDiv.setAttribute("class", "row member animateOnScroll");
-		playerDiv.setAttribute("data-animation", "fadeInRight");
-		
-		//프로필 만들기
-		drawProfile(players[i], playerDiv);
-		
-		//기본 정보 넣기
-		drawInfo(players[i], playerDiv);
-			
-		//기록 넣기
-		drawRecord(players[i], playerDiv);
-
-		//섹션에 어펜드
-		section.appendChild(playerDiv);
-		
+		playerDiv.setAttribute("data-animation", "fadeInUp");
+	
 		//차트 영역 미리 만들기 
 		var chartDiv = document.createElement('div');
 		var pieChartDiv = document.createElement('div');
-		
 		chartDiv.setAttribute("class", "col-sm-3 col-md-3");
 		pieChartDiv.setAttribute("id", "recordChart_" + i);
 		pieChartDiv.setAttribute("class", "pieChartDiv");
 		
 		chartDiv.appendChild(pieChartDiv);
-		playerDiv.appendChild(chartDiv);
 		
-		//차트 그리기
-		drawChart(players[i], playerDiv);
+		//makeBoard(records);
+		makeBoard(section, players[i], playerDiv, chartDiv);
 		
 	}
+})
 	
+	
+//게시판 만들기
+function makeBoard(section, player, playerDiv, chartDiv) {
+		
+	//프로필 만들기
+	drawProfile(player, playerDiv);
+	
+	//기본 정보 넣기
+	drawInfo(player, playerDiv);
+		
+	//기록 넣기
+	drawRecord(player, playerDiv);
+
+	//섹션에 어펜드
+	section.appendChild(playerDiv);
+	
+	//전체 영역div에 차트div 어펜드
+	playerDiv.appendChild(chartDiv);
+	
+	//차트 계산
+	var chartValue = calcChart(player);
+	
+	//차트 그리기
+	drawChart(player, chartValue);
 }
 
 
@@ -202,7 +193,40 @@ function drawRecord(player, playerDiv) {
 }
 
 
-function drawChart(player, playerDiv) {
+function calcChart(player) {
+	var rivalry = player['rivalry'];
+	var arr = new Array();
+	var obj1 = new Object();
+	var obj2 = new Object();
+	var win = 0;
+	var lose = 0;
+	
+	for(var i=0; i<rivalry.length; i++) {
+		win = win + rivalry[i].win;
+		lose = lose + rivalry[i].lose;
+	}
+	obj1.record = "win";
+	obj1.value = win;
+	obj2.record = "lose";
+	obj2.value = lose;
+	arr.push(obj1);
+	arr.push(obj2);
+	
+	/* var recordArr = [
+		[{record:'win', value:0}, {record:'lose', value:2}] //박현택
+		, [{record:'win', value:2}, {record:'lose', value:1}] //변지훈
+		, [{record:'win', value:0}, {record:'lose', value:0}] //윤기정
+		, [{record:'win', value:5}, {record:'lose', value:0}] //이강욱
+		, [{record:'win', value:5}, {record:'lose', value:3}] //최정호
+		, [{record:'win', value:0}, {record:'lose', value:6}] //황선철
+		, [{record:'win', value:0}, {record:'lose', value:0}] //황은상
+	]; */
+	
+	return arr;
+}
+
+
+function drawChart(player, chartValue) {
 	
 	
 	<!-- Chart code -->
@@ -214,17 +238,15 @@ function drawChart(player, playerDiv) {
 	var chart = am4core.create("recordChart_" + player["seq"], am4charts.PieChart);
 	chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 	
-	chart.data = player["rivalry"];
+	chart.data = chartValue;
 	chart.radius = am4core.percent(70);
 	chart.innerRadius = am4core.percent(40);
 	chart.startAngle = 180;
 	chart.endAngle = 360;  
 	
 	var series = chart.series.push(new am4charts.PieSeries());
-	series.dataFields.value = "rival";
-	//series.dataFields.value = "lose";
-	series.dataFields.category = "win";
-	series.dataFields.category = "lose";
+	series.dataFields.value = "value";
+	series.dataFields.category = "record";
 	
 	series.slices.template.cornerRadius = 10;
 	series.slices.template.innerCornerRadius = 7;

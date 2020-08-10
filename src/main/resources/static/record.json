@@ -63,7 +63,7 @@
 				{
 					"rival":"[BISU]_choijh",
 					"win":0,
-					"lose":1
+					"lose":3
 				}
 			]
 		}, 
@@ -179,7 +179,7 @@
 				},
 				{
 					"rival":"Toolbee",
-					"win":1,
+					"win":3,
 					"lose":0
 				}
 			]
