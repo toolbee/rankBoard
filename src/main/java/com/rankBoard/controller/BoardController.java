@@ -34,9 +34,9 @@ public class BoardController {
         return "list.html";
     }
 	
-	@RequestMapping(value = "/selectAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/getPlayerList", method = RequestMethod.GET)
     @ResponseBody
-    public Iterable<PlayerRecord> selectAll(Model model) {
+    public Iterable<PlayerRecord> getPlayerList(Model model) {
 		
 		Iterable<PlayerRecord> playerRecordList = service.findAll();
 		

@@ -49,8 +49,9 @@ $(document).ready(function() {
 	var players = records["responseJSON"]["players"];
 	var section = document.querySelector('section');
 	
-	for (var i=0; i<players.length; i++) {
-		
+	for (var i=0; i<playersFromAjax.length; i++) {
+	//for (var i=0; i<players.length; i++) {
+				
 		//플레이어별 영역 만들기
 		var playerDiv = document.createElement('div');
 		playerDiv.setAttribute("class", "row member animateOnScroll");
@@ -65,8 +66,8 @@ $(document).ready(function() {
 		
 		chartDiv.appendChild(pieChartDiv);
 		
-		//makeBoard(records);
-		makeBoard(section, players[i], playerDiv, chartDiv);
+		makeBoard(section, playersFromAjax[i], playerDiv, chartDiv);
+		//makeBoard(section, players[i], playerDiv, chartDiv);
 		
 	}
 })
@@ -74,7 +75,14 @@ $(document).ready(function() {
 //selectAll
 function selectAll() {
 	
-	
+	$.ajax({
+        url:'/getPlayerList',
+        type:'get',
+        success: function(data) {
+           
+ 			return data;
+        }
+    });
 }
 	
 	
