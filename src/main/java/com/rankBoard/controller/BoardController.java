@@ -11,18 +11,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.rankBoard.domain.PlayerRecord;
+import com.rankBoard.service.BoardService;
+
 @Controller	
 public class BoardController {
 
 	Logger logger = Logger.getLogger(BoardController.class.getName());
 
+	private BoardService service;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+    public String mainList(Model model) {
+		
+        return "list.html";
+    }
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
     //@ResponseStatus(value = HttpStatus.OK)
     public String list(Model model) {
 		
         return "list.html";
-//        return null;
     }
+	
+	@RequestMapping(value = "/selectAll", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<PlayerRecord> selectAll(Model model) {
+		
+		Iterable<PlayerRecord> playerRecordList = service.findAll();
+		
+        return playerRecordList;
+    }
+	
 	
 	@RequestMapping(value = "/putLocationData", method = RequestMethod.POST)
     @ResponseBody
