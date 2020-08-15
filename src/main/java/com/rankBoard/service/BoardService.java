@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.rankBoard.domain.MatchRecord;
@@ -25,19 +26,18 @@ public class BoardService {
         boardRepository.delete(playerRecord);
     }
  
-    public Optional<PlayerRecord> findOne(Integer number) {
-        return boardRepository.findById(number);
-    }
+	/*
+	 * public Optional<PlayerRecord> findOne(Integer number) { // return
+	 * boardRepository.findById(number); }
+	 */
     
     public Iterable<PlayerRecord> findAll() {
         return boardRepository.findAll();
     }
  
-    public Page<PlayerRecord> findByMap(String map, PageRequest pageRequest) {
-        return boardRepository.findByMap(map, pageRequest);
+    public Page<PlayerRecord> findByPlayers(String name, Pageable pageable) {
+        return boardRepository.findByPlayers(name, pageable);
     }
-
-    
     
 	public void getRecordAll() {
 		// TODO Auto-generated method stub

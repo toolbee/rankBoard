@@ -1,13 +1,9 @@
 package com.elasticsearch.config;
 
-import org.apache.http.HttpHost;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.transport.TransportClient;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.h2.H2ConsoleProperties.Settings;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
@@ -15,9 +11,9 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
-
-@EnableElasticsearchRepositories
 @Configuration
+@EnableElasticsearchRepositories
+@ComponentScan
 public class ElasticConfig {
 
 	@Value(value = "{elastic.host}")
@@ -30,16 +26,9 @@ public class ElasticConfig {
 	private String clusterName;
 
 //https://www.baeldung.com/spring-data-elasticsearch-tutorial
+//	@EnableElasticsearchRepositories(basePackages = "com.elasticsearch.repository")
+//	@ComponentScan(basePackages = { "com.elasticsearch.service" })
 	
-	public RestHighLevelClient client2() throws Exception {
-
-		RestHighLevelClient client = new RestHighLevelClient(
-				RestClient.builder(
-						new HttpHost(host, port, "http")));
-		return client;
-	}	
-
-
 	@Bean
 	public RestHighLevelClient client() {
 		ClientConfiguration clientConfiguration 

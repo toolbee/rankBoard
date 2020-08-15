@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,17 @@ public class BoardController {
         return playerRecordList;
     }
 	
+	@RequestMapping(value = "/getPlayerOne", method = RequestMethod.GET)
+    @ResponseBody
+    public Iterable<PlayerRecord> getPlayerOne(Model model) {
+		
+		String nameToFind = "변지훈";
+		Page<PlayerRecord> recordByName = service.findByPlayers(nameToFind, PageRequest.of(0, 10));
+		
+		logger.info(recordByName.toString());
+		
+        return recordByName;
+    }
 	
 	@RequestMapping(value = "/putLocationData", method = RequestMethod.POST)
     @ResponseBody
