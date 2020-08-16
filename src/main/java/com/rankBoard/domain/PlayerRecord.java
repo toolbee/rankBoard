@@ -32,6 +32,10 @@ public class PlayerRecord {
 	@Field(type = FieldType.Nested, includeInParent = true)
 	private List<PlayerRecord> players;
 	
+	public PlayerRecord() {
+
+	}
+	
 	public PlayerRecord(int seq, String name, String nickname, String photo, String tribe, String[] team,
 			String teamMatchko, Map<?, ?>[] teamMatch, String rivalryko, Map<?, ?> rivalry) {
 		super();

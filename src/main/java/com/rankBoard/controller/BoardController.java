@@ -1,6 +1,8 @@
 package com.rankBoard.controller;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,11 +25,13 @@ public class BoardController {
 
 	private BoardService service;
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String mainList(Model model) {
 		
         return "list.html";
     }
+	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
     //@ResponseStatus(value = HttpStatus.OK)
@@ -35,6 +39,7 @@ public class BoardController {
 		
         return "list.html";
     }
+	
 	
 	@RequestMapping(value = "/getPlayerList", method = RequestMethod.GET)
     @ResponseBody
@@ -44,6 +49,7 @@ public class BoardController {
 		
         return playerRecordList;
     }
+	
 	
 	@RequestMapping(value = "/getPlayerOne", method = RequestMethod.GET)
     @ResponseBody
@@ -56,6 +62,36 @@ public class BoardController {
 		
         return recordByName;
     }
+	
+	
+	@RequestMapping(value = "/updateRecord", method = RequestMethod.POST)
+    @ResponseBody
+    public Iterable<PlayerRecord> updateRecord(Model model) {
+		
+		PlayerRecord record = new PlayerRecord();
+		Map<?,?> map = model.asMap();
+		
+		@SuppressWarnings("unchecked")
+		Set<String> keys = (Set<String>) map.keySet();
+		
+		record.setName((String) map.get("name"));
+		record.setNickname((String) map.get("nickname"));
+		record.setPhoto((String) map.get("photo"));
+		record.setRivalry((Map<?,?>) map.get("rivalry"));
+		record.setSeq(Integer.parseInt((String) map.get("seq")));
+		record.setTeam((String[]) map.get("team"));
+		record.setTeamMatch((Map[]) map.get("teamMatch"));
+		record.setTribe((String) map.get("tribe"));
+		
+		keys.forEach(key -> System.out.println(key));
+		
+		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) service.save(record);
+		
+		logger.info(recordByName.toString());
+		
+        return recordByName;
+    }
+	
 	
 	@RequestMapping(value = "/putLocationData", method = RequestMethod.POST)
     @ResponseBody
