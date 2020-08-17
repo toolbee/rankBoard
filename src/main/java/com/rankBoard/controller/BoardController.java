@@ -64,9 +64,9 @@ public class BoardController {
     }
 	
 	
-	@RequestMapping(value = "/updateRecord", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertRecord", method = RequestMethod.POST)
     @ResponseBody
-    public Iterable<PlayerRecord> updateRecord(Model model) {
+    public Iterable<PlayerRecord> insertRecord(Model model) {
 		
 		PlayerRecord record = new PlayerRecord();
 		Map<?,?> map = model.asMap();
@@ -82,6 +82,43 @@ public class BoardController {
 		record.setTeam((String[]) map.get("team"));
 		record.setTeamMatch((Map[]) map.get("teamMatch"));
 		record.setTribe((String) map.get("tribe"));
+		
+		keys.forEach(key -> System.out.println(key));
+		
+		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) service.save(record);
+		
+		logger.info(recordByName.toString());
+		
+        return recordByName;
+    }
+	
+	
+	@RequestMapping(value = "/saveRecord", method = RequestMethod.POST)
+    @ResponseBody
+    public Iterable<PlayerRecord> saveRecord(Model model) {
+		
+		PlayerRecord record = new PlayerRecord();
+		Map<?,?> map = model.asMap();
+		
+		@SuppressWarnings("unchecked")
+		Set<String> keys = (Set<String>) map.keySet();
+		
+		String id = (String) map.get("seq");
+		record.setName((String) map.get("name"));
+		record.setNickname((String) map.get("nickname"));
+		record.setPhoto((String) map.get("photo"));
+		record.setRivalry((Map<?,?>) map.get("rivalry"));
+		record.setSeq(Integer.parseInt((String) map.get("seq")));
+		record.setTeam((String[]) map.get("team"));
+		record.setTeamMatch((Map[]) map.get("teamMatch"));
+		record.setTribe((String) map.get("tribe"));
+		
+		// id 존재하면 update 
+		if(service.findById(id)) {
+			
+		} else {
+			// 존재하지 않으면 insert
+		}
 		
 		keys.forEach(key -> System.out.println(key));
 		

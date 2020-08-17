@@ -18,6 +18,10 @@ public class BoardService {
 	@Autowired
     private BoardRepository boardRepository;
  
+	public boolean findById(String id) {
+        return boardRepository.existsById(id);
+    }
+	
     public PlayerRecord save(PlayerRecord playerRecord) {
         return boardRepository.save(playerRecord);
     }	
