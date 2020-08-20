@@ -2,14 +2,19 @@ package com.rankBoard.repository;
 
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.annotations.Query;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("boardRepository")
-public class LoginRepository {
+import com.rankBoard.domain.PlayerRecord;
 
-	public String requestLogin(Map<?, ?> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+@Repository("boardRepository")
+public interface LoginRepository extends ElasticsearchRepository<PlayerRecord, String> {
+
+
+    @Query("{\"bool\": {\"must\": [{\"match\": {\"user.id\": \"?0\", \"user.password\": \"?0\"}}]}}")
+    String requestLoginUsingCustomQuery(String id, String password);
 
 }

@@ -13,8 +13,9 @@ public class LoginService {
 	@Autowired
     private LoginRepository loginRepository;
 	
-	public String requestLogin(Map<?, ?> map) {
-		return loginRepository.requestLogin(map);
+	public String requestLogin(String id, String password) {
+		
+		return loginRepository.requestLoginUsingCustomQuery(id, password);
 	}
 
 }

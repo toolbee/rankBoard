@@ -46,8 +46,10 @@ public class LoginController {
 		@SuppressWarnings("unchecked")
 		Set<String> keys = (Set<String>) map.keySet();
 		
+		String id = (String) map.get("id");
+		String password = (String) map.get("password");
 
-		String result = service.requestLogin(map);
+		String result = service.requestLogin(id, password);
 		
         return result;
     }
