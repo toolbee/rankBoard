@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.rankBoard.domain.PlayerRecord;
 
-@Repository("boardRepository")
+@Repository("loginRepository")
 public interface LoginRepository extends ElasticsearchRepository<PlayerRecord, String> {
 
 
