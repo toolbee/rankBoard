@@ -79,11 +79,14 @@ $(document).ready(function() {
 function selectAll() {
 	
 	$.ajax({
-        url:'/getPlayerList',
-        type:'get',
+        url:'/requestLogin',
+        type:'post',
         success: function(data) {
-           
- 			return data;
+        	
+        	if(data == "S") {
+				
+        	
+        	}
         }
     });
 }

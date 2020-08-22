@@ -18,6 +18,29 @@
 	<script src="javascript/pace.min.js"></script>
 </head>
 
+<script>
+$(document).ready(function() {
+		
+	
+})
+
+function login_click() {
+	
+	$.ajax({
+        url:'/requestLogin',
+        type:'post',
+        success: function(data) {
+           
+ 			if(data == "S") {
+ 				
+ 			}
+        }
+    });
+}
+	
+
+</script>
+
 <body>
 	<header>
 		<div class="container hidden-xs logo">
@@ -153,7 +176,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<button class="btn btn-primary pull-right">sign in</button>
+									<button id="loginButton" class="btn btn-primary pull-right" onclick="login_click();">sign in</button>
 								</div>
 							</form>
 						</div>
