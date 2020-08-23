@@ -26,13 +26,7 @@ public class BoardController {
 	private BoardService service;
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String mainList(Model model) {
-		
-        return "list.html";
-    }
-	
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
     //@ResponseStatus(value = HttpStatus.OK)
     public String list(Model model) {

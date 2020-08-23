@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 	<title>Rank Board Website</title>
 	<meta charset="utf-8">
@@ -16,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<script src="javascript/pace.min.js"></script>
+	<script src="javascript/includeHTML.js"></script>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- amchart 4 -->
@@ -40,10 +40,12 @@
 </head>
 
 <script type="text/javascript">
-	
+
 var records = $.getJSON("record.json");
 
 $(document).ready(function() {
+	includeHTML();
+	
 	//var playersFromAjax = selectAll();
 	
 	var players = records["responseJSON"]["players"];
@@ -288,121 +290,20 @@ function drawChart(player, chartValue) {
 }
 
 </script>
+
 <body>
-	<header>
-		<div class="container hidden-xs ">
-			<h1>
-				<a href="#" style="text-decoration: none; ">
-					<!-- <img class="img-responsive" src="images/logos/logo.png" alt="Logo" /> -->
-					Rank & Achievement
-				</a>
-			</h1>
-		</div>
-		<div class="navbar-wrapper">
-			<div class="container">
-				<nav class="navbar navbar-static-top">
-					<div class="navbar-header">
-						<a class="navbar-brand visible-xs" href="index.html"><img class="img-responsive" src="images/logos/logo-xs.png" alt="" />
-						</a>
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-
-					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-center navbar-nav">
-							<li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Main</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-submenu">
-										<a href="#">Home</a>
-									</li>
-									<!-- <li class="dropdown-submenu">
-										<a data-toggle="dropdown" class="trigger dropdown-toggle" href="#">Pages <span class="pull-right"><i class="fa fa-angle-right"></i></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="page-simple.html">Simple Page</a>
-											</li>
-											<li><a href="page-sidebar.html">Right Sidebar</a>
-											</li>
-											<li><a href="about-us.html">About Us</a>
-											</li>
-											<li><a href="services.html">Services</a>
-											</li>
-										</ul>
-									</li> -->
-								</ul>
-							</li>
-
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</header>
-
-	<div class="container">
-		<!-- <div class="row">
-			<div class="col-md-12 hidden-xs">
-				<div class="cover lead-photo" style="background-image: url('images/about-us.jpg');">
-				</div>
-			</div>
-		</div> -->
-		<div class="row">
-			<div class="col-md-12 col-lg-10 col-lg-offset-1 page-indent">
-				<article class="content">
-					
-					<section class="about">
-						<div class="row header">
-							<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-								<h2>Our team</h2>
-								<p class="text-center">끝 없는 전투 속에 남은 것은 승리뿐.</p>
-							</div>
-						</div>
-						<!-- player별 record append 공간 -->						
-					</section>
-				</article>
-
-			</div>
-		</div>
-	</div>
-	
-	<footer class="page-footer">
-		<div class="container">
-			<div class="row">
-				<div class="row-xs-12">
-					<div class="divider"></div>
-					<div class="text-center">
-						<h3>
-							<a href="index.html" style="text-decoration: none; ">Rank & Achievement</a>
-								<!-- <img src="images/logos/logo.png" alt="" class="logo"> -->
-						</h3>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-9">
-					<ul class="footer-links">
-						<li><a href="#">Privacy Policy</a>
-						</li>
-						<li><a href="blog-index.html">Blog</a>
-						</li>
-						<li><a href="contact.html">Contact</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col-sm-3">
-					<p>© Toolbee 2020</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<header include-html="header.html"></header>
+    <div class="container" include-html="list2.html"></div>
+    <footer class="page-footer" include-html="footer.html"></footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="javascript/animate-on-scroll.js"></script>
 	<script src="javascript/script.js"></script>
 </body>
+
+<script>
+    
+</script>
 
 </html>
