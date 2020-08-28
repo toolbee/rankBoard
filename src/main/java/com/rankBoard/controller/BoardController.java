@@ -87,9 +87,9 @@ public class BoardController {
     }
 	
 	
-	@RequestMapping(value = "/saveRecord", method = RequestMethod.POST)
+	@RequestMapping(value = "/editRecord", method = RequestMethod.POST)
     @ResponseBody
-    public Iterable<PlayerRecord> saveRecord(Model model) {
+    public Iterable<PlayerRecord> editRecord(Model model) {
 		
 		PlayerRecord record = new PlayerRecord();
 		Map<?,?> map = model.asMap();
@@ -124,18 +124,4 @@ public class BoardController {
     }
 	
 	
-	@RequestMapping(value = "/putLocationData", method = RequestMethod.POST)
-    @ResponseBody
-    public String putLocationData(@RequestParam Map map) {
-
-		String uuid = (String) map.get("uuid");
-		String latitude = (String) map.get("latitude");
-		String longitude = (String) map.get("longitude");
-		String address = (String) map.get("address");
-		
-		String result = uuid + "+" + latitude + "+" + longitude;
-		logger.log(Level.INFO, "#INPUT : "+uuid+"/"+latitude+"/"+longitude+" #OUTPUT : "+result);
-		
-        return result;
-    }
 }
