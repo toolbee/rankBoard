@@ -31,7 +31,8 @@ public class BoardController {
     //@ResponseStatus(value = HttpStatus.OK)
     public String list(Model model) {
 		
-        return "list.html";
+//        return "record/list.html";
+        return "record/listLayout.html";
     }
 	
 	
@@ -42,6 +43,17 @@ public class BoardController {
 		Iterable<PlayerRecord> playerRecordList = service.findAll();
 		
         return playerRecordList;
+    }
+	
+	@RequestMapping(value = "/selectOne", method = RequestMethod.POST)
+    public String selectOne(Model model) {
+		
+		int seq = (int) model.getAttribute("seq");
+		PlayerRecord playerRecord = service.findBySeq(seq);
+		
+		model.addAttribute("playerRecord", playerRecord);
+		
+        return "record/detailLayout.html";
     }
 	
 	

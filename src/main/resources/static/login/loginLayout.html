@@ -22,9 +22,16 @@
 </head>
 
 <script>
+	$(document).ready(function() {
+		$("#headerDiv").load("include/header.html");
+		$("#contentDiv").load("login/login.html");
+		$("#footerDiv").load("include/footer.html");
+	});
+</script>
+
+<script>
 $(document).ready(function() {
 		
-	includeHTML();
 })
 
 /* function login_click() {
@@ -46,9 +53,9 @@ $(document).ready(function() {
 
 <body>
 
-	<header include-html="header.html"></header>
-    <div class="container" include-html="loginArticle.html"></div>
-    <footer class="page-footer" include-html="footer.html"></footer>
+	<header id="headerDiv" ></header>
+    <div id="contentDiv" class="container"></div>
+    <footer id="footerDiv" class="page-footer" ></footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>

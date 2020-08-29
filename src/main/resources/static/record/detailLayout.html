@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 	<title>Rank Board Website</title>
 	<meta charset="utf-8">
@@ -18,70 +19,46 @@
 	<script src="javascript/includeHTML.js"></script>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- amchart 4 -->
-	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
-
-	<!-- record data -->
-
-	<style type="text/css">
-		section.about img {
-			width: 120px;
-			height: 120px;
-			object-fit: contain;
-		}
-		div.pieChartDiv {
-			font-size: 13px;
-			height: 100%;
-		}
-	</style>
 </head>
 
-<script type="text/javascript">
-
-var records = $.getJSON("record.json");
-
+<script>
 $(document).ready(function() {
-	includeHTML();
-	
-	//var playersFromAjax = selectAll();
-	
-	var players = records["responseJSON"]["players"];
+	$("#headerDiv").load("include/header.html");
+	$("#footerDiv").load("include/footer.html");
+});
+</script>
+
+<script>
+$(document).ready(function() {
+		
+	var player = selectOne();
 	var section = document.querySelector('section');
 	
-	//if(playerFromAjax != null) 
 		
-	//for (var i=0; i<playersFromAjax.length; i++) {
-	for (var i=0; i<players.length; i++) {
-				
-		//플레이어별 영역 만들기
-		var playerDiv = document.createElement('div');
-		playerDiv.setAttribute("class", "row member animateOnScroll");
-		playerDiv.setAttribute("data-animation", "fadeInUp");
+	//플레이어 영역 만들기
+	var playerDiv = document.createElement('div');
+	playerDiv.setAttribute("class", "row member animateOnScroll");
+	playerDiv.setAttribute("data-animation", "fadeInUp");
+
+	//차트 영역 미리 만들기 
+	var chartDiv = document.createElement('div');
+	var pieChartDiv = document.createElement('div');
+	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
+	pieChartDiv.setAttribute("id", "recordChart_" + i);
+	pieChartDiv.setAttribute("class", "pieChartDiv");
 	
-		//차트 영역 미리 만들기 
-		var chartDiv = document.createElement('div');
-		var pieChartDiv = document.createElement('div');
-		chartDiv.setAttribute("class", "col-sm-3 col-md-3");
-		pieChartDiv.setAttribute("id", "recordChart_" + i);
-		pieChartDiv.setAttribute("class", "pieChartDiv");
+	chartDiv.appendChild(pieChartDiv);
+	
+	makeBoard(section, player, playerDiv, chartDiv);
 		
-		chartDiv.appendChild(pieChartDiv);
-		
-		//makeBoard(section, playersFromAjax[i], playerDiv, chartDiv);
-		makeBoard(section, players[i], playerDiv, chartDiv);
-		
-	}
 })
 
-//selectAll
-function selectAll() {
+//selectOne
+function selectOne() {
 	
 	$.ajax({
-        url:'/requestLogin',
-        type:'post',
+        url:'/selectOne',
+        type:'get',
         success: function(data) {
         	
         	if(data == "S") {
@@ -92,7 +69,7 @@ function selectAll() {
     });
 }
 	
-	
+
 //게시판 만들기
 function makeBoard(section, player, playerDiv, chartDiv) {
 		
@@ -235,16 +212,6 @@ function calcChart(player) {
 	arr.push(obj1);
 	arr.push(obj2);
 	
-	/* var recordArr = [
-		[{record:'win', value:0}, {record:'lose', value:2}] //박현택
-		, [{record:'win', value:2}, {record:'lose', value:1}] //변지훈
-		, [{record:'win', value:0}, {record:'lose', value:0}] //윤기정
-		, [{record:'win', value:5}, {record:'lose', value:0}] //이강욱
-		, [{record:'win', value:5}, {record:'lose', value:3}] //최정호
-		, [{record:'win', value:0}, {record:'lose', value:6}] //황선철
-		, [{record:'win', value:0}, {record:'lose', value:0}] //황은상
-	]; */
-	
 	return arr;
 }
 
@@ -292,18 +259,16 @@ function drawChart(player, chartValue) {
 </script>
 
 <body>
-	<header include-html="header.html"></header>
-    <div class="container" include-html="list2.html"></div>
-    <footer class="page-footer" include-html="footer.html"></footer>
+
+	<header id="headerDiv" ></header>
+    <div class="container" include-html="record/detail.html"></div>
+    <footer id="footerDiv" class="page-footer" ></footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="javascript/animate-on-scroll.js"></script>
 	<script src="javascript/script.js"></script>
+	
 </body>
-
-<script>
-    
-</script>
 
 </html>

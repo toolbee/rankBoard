@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 	<title>Rank Board Website</title>
 	<meta charset="utf-8">
@@ -19,51 +18,71 @@
 	<script src="javascript/includeHTML.js"></script>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- amchart 4 -->
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
+
+	<!-- record data -->
+
+	<style type="text/css">
+		section.about img {
+			width: 120px;
+			height: 120px;
+			object-fit: contain;
+		}
+		div.pieChartDiv {
+			font-size: 13px;
+			height: 100%;
+		}
+	</style>
 </head>
 
 <script>
+	$(document).ready(function() {
+		$("#headerDiv").load("include/header.html");
+		$("#footerDiv").load("include/footer.html");
+	});
+</script>
+
+<script type="text/javascript">
+
+var records = $.getJSON("record.json");
+
 $(document).ready(function() {
-		
-	includeHTML();
 	
-	var player = selectOne();
+//var playersFromAjax = selectAll();
+	
+	var players = records["responseJSON"]["players"];
 	var section = document.querySelector('section');
 	
+	if(section != null) {
 		
-	//플레이어 영역 만들기
-	var playerDiv = document.createElement('div');
-	playerDiv.setAttribute("class", "row member animateOnScroll");
-	playerDiv.setAttribute("data-animation", "fadeInUp");
-
-	//차트 영역 미리 만들기 
-	var chartDiv = document.createElement('div');
-	var pieChartDiv = document.createElement('div');
-	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
-	pieChartDiv.setAttribute("id", "recordChart_" + i);
-	pieChartDiv.setAttribute("class", "pieChartDiv");
-	
-	chartDiv.appendChild(pieChartDiv);
-	
-	makeBoard(section, player, playerDiv, chartDiv);
+		//for (var i=0; i<playersFromAjax.length; i++) {
+		for (var i=0; i<players.length; i++) {
+					
+			//플레이어별 영역 만들기
+			var playerDiv = document.createElement('div');
+			playerDiv.setAttribute("class", "row member animateOnScroll");
+			playerDiv.setAttribute("data-animation", "fadeInUp");
 		
+			//차트 영역 미리 만들기 
+			var chartDiv = document.createElement('div');
+			var pieChartDiv = document.createElement('div');
+			chartDiv.setAttribute("class", "col-sm-3 col-md-3");
+			pieChartDiv.setAttribute("id", "recordChart_" + i);
+			pieChartDiv.setAttribute("class", "pieChartDiv");
+			
+			chartDiv.appendChild(pieChartDiv);
+			
+			//makeBoard(section, playersFromAjax[i], playerDiv, chartDiv);
+			makeBoard(section, players[i], playerDiv, chartDiv);
+			
+		}
+	}
 })
 
-//selectOne
-function selectOne() {
-	
-	$.ajax({
-        url:'/selectOne',
-        type:'get',
-        success: function(data) {
-        	
-        	if(data == "S") {
-				
-        	
-        	}
-        }
-    });
-}
-	
 
 //게시판 만들기
 function makeBoard(section, player, playerDiv, chartDiv) {
@@ -98,6 +117,8 @@ function drawProfile(player, playerDiv) {
 	var nickname = document.createElement('div');
 
 	profileDiv.setAttribute("class", "col-sm-2 col-md-2 text-center");
+	profileDiv.setAttribute("style", "cursor:pointer;");
+	profileDiv.setAttribute("onclick", "viewDetail("+player['seq']+");");
 	name.setAttribute("class", "name");
 	nickname.setAttribute("class", "nickname");
 	
@@ -207,6 +228,16 @@ function calcChart(player) {
 	arr.push(obj1);
 	arr.push(obj2);
 	
+	/* var recordArr = [
+		[{record:'win', value:0}, {record:'lose', value:2}] //박현택
+		, [{record:'win', value:2}, {record:'lose', value:1}] //변지훈
+		, [{record:'win', value:0}, {record:'lose', value:0}] //윤기정
+		, [{record:'win', value:5}, {record:'lose', value:0}] //이강욱
+		, [{record:'win', value:5}, {record:'lose', value:3}] //최정호
+		, [{record:'win', value:0}, {record:'lose', value:6}] //황선철
+		, [{record:'win', value:0}, {record:'lose', value:0}] //황은상
+	]; */
+	
 	return arr;
 }
 
@@ -251,19 +282,58 @@ function drawChart(player, chartValue) {
 	
 }
 
+
+//selectAll
+function selectAll() {
+	$.ajax({
+        url:'/selectAll',
+        type:'post',
+        success: function(data) {
+        	
+        	if(data == "S") {
+				
+        	}
+        }
+    });
+}
+
+//
+function viewDetail(seq) {
+	$.ajax({
+        url: '/selectOne',
+        type: 'post',
+        data: seq 
+    });
+}
+
+
 </script>
 
 <body>
-
-	<header include-html="header.html"></header>
-    <div class="container" include-html="detail.html"></div>
-    <footer class="page-footer" include-html="footer.html"></footer>
+	<header id="headerDiv" ></header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-10 col-lg-offset-1 page-indent">
+				<article class="content">
+	    			<section class="about">
+		    			<div class="row header">
+							<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+								<h2>Our team</h2>
+								<p class="text-center">끝 없는 전투 속에 남은 것은 승리뿐.</p>
+							</div>
+						</div>
+						<!-- player별 record append 공간 -->
+	    			</section>
+		    	</article>
+			</div>
+		</div>
+    </div>
+    <footer id="footerDiv" class="page-footer" ></footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="javascript/animate-on-scroll.js"></script>
 	<script src="javascript/script.js"></script>
-	
 </body>
 
 </html>

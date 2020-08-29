@@ -43,6 +43,10 @@ public class BoardService {
         return boardRepository.findByPlayers(name, pageable);
     }
     
+    public PlayerRecord findBySeq(int seq) {
+        return boardRepository.findBySeq(seq);
+    }
+    
 	public void getRecordAll() {
 		// TODO Auto-generated method stub
 		
