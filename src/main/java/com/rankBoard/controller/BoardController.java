@@ -45,15 +45,28 @@ public class BoardController {
         return playerRecordList;
     }
 	
+	
+	@RequestMapping(value = "/viewDetail", method = RequestMethod.POST)
+    public String viewDetail(Model model) {
+		
+		int seq = (int) model.getAttribute("seq");
+		model.addAttribute("seq", seq);
+		
+        return "record/detailLayout.html";
+    }
+	
+	
 	@RequestMapping(value = "/selectOne", method = RequestMethod.POST)
-    public String selectOne(Model model) {
+	@ResponseBody
+    public PlayerRecord selectOne(Model model) {
 		
 		int seq = (int) model.getAttribute("seq");
 		PlayerRecord playerRecord = service.findBySeq(seq);
 		
 		model.addAttribute("playerRecord", playerRecord);
+		model.addAttribute("seq", seq);
 		
-        return "record/detailLayout.html";
+        return playerRecord;
     }
 	
 	

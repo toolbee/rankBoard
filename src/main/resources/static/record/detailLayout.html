@@ -29,9 +29,10 @@ $(document).ready(function() {
 </script>
 
 <script>
+var seq = '${seq}';
 $(document).ready(function() {
 		
-	var player = selectOne();
+	var player = selectOne(seq);
 	var section = document.querySelector('section');
 	
 		
@@ -54,11 +55,12 @@ $(document).ready(function() {
 })
 
 //selectOne
-function selectOne() {
+function selectOne(seq) {
 	
 	$.ajax({
         url:'/selectOne',
-        type:'get',
+        type:'post',
+        data: seq,
         success: function(data) {
         	
         	if(data == "S") {
