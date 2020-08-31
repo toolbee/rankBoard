@@ -31,8 +31,8 @@ public class BoardController {
     //@ResponseStatus(value = HttpStatus.OK)
     public String list(Model model) {
 		
-//        return "record/list.html";
-        return "record/listLayout.html";
+//        return "html/record/list.html";
+        return "html/record/listLayout.html";
     }
 	
 	
@@ -52,7 +52,7 @@ public class BoardController {
 		int seq = (int) model.getAttribute("seq");
 		model.addAttribute("seq", seq);
 		
-        return "record/detailLayout.html";
+        return "html/record/detailLayout.html";
     }
 	
 	

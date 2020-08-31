@@ -31,7 +31,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
 		
-        return "login/loginLayout.html";
+        return "html/login/loginLayout.html";
     }
 	
 	

@@ -10,7 +10,7 @@ public class CommonController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) {
 		
-        return "record/listLayout.html";
+        return "html/record/listLayout.html";
     }
 	
 }

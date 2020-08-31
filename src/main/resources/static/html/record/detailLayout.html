@@ -23,8 +23,8 @@
 
 <script>
 $(document).ready(function() {
-	$("#headerDiv").load("include/header.html");
-	$("#footerDiv").load("include/footer.html");
+	$("#headerDiv").load("html/include/header.html");
+	$("#footerDiv").load("html/include/footer.html");
 });
 </script>
 
@@ -32,27 +32,10 @@ $(document).ready(function() {
 var seq = '${seq}';
 $(document).ready(function() {
 		
-	var player = selectOne(seq);
-	var section = document.querySelector('section');
+	selectOne(seq);
 	
-		
-	//플레이어 영역 만들기
-	var playerDiv = document.createElement('div');
-	playerDiv.setAttribute("class", "row member animateOnScroll");
-	playerDiv.setAttribute("data-animation", "fadeInUp");
-
-	//차트 영역 미리 만들기 
-	var chartDiv = document.createElement('div');
-	var pieChartDiv = document.createElement('div');
-	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
-	pieChartDiv.setAttribute("id", "recordChart_" + i);
-	pieChartDiv.setAttribute("class", "pieChartDiv");
-	
-	chartDiv.appendChild(pieChartDiv);
-	
-	makeBoard(section, player, playerDiv, chartDiv);
-		
 })
+
 
 //selectOne
 function selectOne(seq) {
@@ -62,13 +45,34 @@ function selectOne(seq) {
         type:'post',
         data: seq,
         success: function(data) {
+
+        	var section = document.querySelector('section');
+        	var playerDiv;
+        	var chartDiv;
         	
-        	if(data == "S") {
-				
-        	
-        	}
+        	makeSpace(playerDiv, chartDiv);
+
+        	makeBoard(section, data, playerDiv, chartDiv);
         }
     });
+}
+
+
+//영역 만들기
+function makeSpace(playerDiv, chartDiv) {
+	//플레이어 영역 만들기
+	playerDiv = document.createElement('div');
+	playerDiv.setAttribute("class", "row member animateOnScroll");
+	playerDiv.setAttribute("data-animation", "fadeInUp");
+
+	//차트 영역 미리 만들기 
+	chartDiv = document.createElement('div');
+	var pieChartDiv = document.createElement('div');
+	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
+	pieChartDiv.setAttribute("id", "recordChart_" + i);
+	pieChartDiv.setAttribute("class", "pieChartDiv");
+	
+	chartDiv.appendChild(pieChartDiv);
 }
 	
 
@@ -263,7 +267,7 @@ function drawChart(player, chartValue) {
 <body>
 
 	<header id="headerDiv" ></header>
-    <div class="container" include-html="record/detail.html"></div>
+    <div class="container" include-html="html/record/detail.html"></div>
     <footer id="footerDiv" class="page-footer" ></footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
