@@ -47,7 +47,7 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/viewDetail", method = RequestMethod.POST)
-    public String viewDetail(Model model) {
+    public String viewDetail(@RequestParam Model model) {
 		
 		int seq = (int) model.getAttribute("seq");
 		model.addAttribute("seq", seq);
