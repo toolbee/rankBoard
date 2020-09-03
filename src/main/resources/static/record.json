@@ -259,7 +259,42 @@
 					"lose":0
 				}
 			]
-		}
+		},
+{
+
+			"seq":7,
+			"name":"조현철",
+			"nickname":"조현철",
+			"photo":"hes-square.png",
+			"tribe":"Protoss",
+			"team":["서울팀"],
+			"teamMatch_ko":"팀전",
+			"teamMatch":[
+				{
+					"myTeam":"",
+					"opposeTeam":"",
+					"win":0,
+					"lose":0
+				}
+			],
+			"rivalry_ko":"개인전",
+			"rivalry":[
+				{
+					"rival":"General Hwang",
+					"win":0,
+					"lose":0
+				}, 
+				{
+					"rival":"stygj",
+					"win":0,
+					"lose":0
+				},
+				{
+					"rival":"Toolbee",
+					"win":0,
+					"lose":0
+				}
+}
 	]
 }
 	
