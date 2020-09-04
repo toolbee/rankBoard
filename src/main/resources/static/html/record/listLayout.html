@@ -57,6 +57,38 @@ $(document).ready(function() {
 	var players = records["responseJSON"]["players"];
 	var section = document.querySelector('section');
 	
+	//승률 winRate 계산하여 put
+	players = calcWinRate(players);
+	
+	// winRate 기준으로 정렬
+	players.sort(function (a, b) {
+		if (a.winRate > b.winRate) {
+	    	return -1;
+	  	}
+	  	if (a.winRate < b.winRate) {
+	    	return 1;
+	  	}
+	 	// 승률 같을 경우 '승' 다수가 상위
+	  	if (a.winRate == b.winRate) {
+			if (a.win > b.win) {
+		    	return -1;
+	  		}
+	  		if (a.win < b.win) {
+	    		return 1;
+	  		}
+	  		// '승' 같을 경우 경기수 다수가 상위
+		  	if (a.win == b.win) {
+				if (a.win+a.lose > b.win+b.lose) {
+			    	return -1;
+		  		}
+		  		if (a.win+a.lose < b.win+b.lose) {
+		    		return 1;
+		  		}
+		  		return 0;
+		  	}
+	  	}
+	});
+	
 	if(section != null) {
 		
 		//for (var i=0; i<playersFromAjax.length; i++) {
@@ -71,7 +103,7 @@ $(document).ready(function() {
 			var chartDiv = document.createElement('div');
 			var pieChartDiv = document.createElement('div');
 			chartDiv.setAttribute("class", "col-sm-3 col-md-3");
-			pieChartDiv.setAttribute("id", "recordChart_" + i);
+			pieChartDiv.setAttribute("id", "recordChart_" + players[i]["seq"]);
 			pieChartDiv.setAttribute("class", "pieChartDiv");
 			
 			chartDiv.appendChild(pieChartDiv);
@@ -83,6 +115,39 @@ $(document).ready(function() {
 	}
 })
 
+//승률 winRate 계산하여 put
+function calcWinRate(players) {
+	
+	for(var i=0; i<players.length; i++) {
+		var rivalries = players[i]['rivalry'];
+		var arr = new Array();
+		var obj1 = new Object();
+		var obj2 = new Object();
+		var win = 0;
+		var lose = 0;
+		var winRate = 0;
+		
+		for(var j=0; j<rivalries.length; j++) {
+			win = win + rivalries[j].win;
+			lose = lose + rivalries[j].lose;
+		}
+		winRate = win / (win + lose) * 100;
+		if(isNaN(winRate)) winRate = 0;
+		
+		obj1.record = "win";
+		obj1.value = win;
+		obj2.record = "lose";
+		obj2.value = lose;
+		arr.push(obj1);
+		arr.push(obj2);
+		
+		players[i].statistics = arr;
+		players[i].winRate = winRate;
+		players[i].win = win;
+		players[i].lose = lose;
+	}
+	return players;
+}
 
 //게시판 만들기
 function makeBoard(section, player, playerDiv, chartDiv) {
@@ -103,10 +168,11 @@ function makeBoard(section, player, playerDiv, chartDiv) {
 	playerDiv.appendChild(chartDiv);
 	
 	//차트 계산
-	var chartValue = calcChart(player);
+	//var chartValue = calcChart(player);
 	
 	//차트 그리기
-	drawChart(player, chartValue);
+	//drawChart(player, chartValue);
+	drawChart(player, player["statistics"]);
 }
 
 
@@ -152,7 +218,7 @@ function drawInfo(player, playerDiv) {
 		item.setAttribute("class", "title");
 		if(i == 0) item.textContent = player['team'];
 		if(i == 1) item.textContent = player['tribe'];
-		if(i == 2) item.textContent = '-';
+		if(i == 2) item.textContent = '(개인) ' + player['win'] + '승 ' + player['lose'] + '패';
 			
 		li.appendChild(title);
 		li.appendChild(item);

@@ -6,7 +6,7 @@
 			"nickname":"kncpht",
 			"photo":"pht-square.png",
 			"tribe":"Protoss",
-			"team":["챗봇팀"],
+			"team":["챗봇팀", "조&박팀", "박&최팀"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
@@ -14,10 +14,22 @@
 					"opposeTeam":"제주팀",
 					"win":1,
 					"lose":4
+				},
+				{
+					"myTeam":"박&최팀",
+					"opposeTeam":"조&변팀",
+					"win":1,
+					"lose":1
+				},
+				{
+					"myTeam":"조&박팀",
+					"opposeTeam":"서울팀",
+					"win":1,
+					"lose":1
 				}
 			],
 			"rivalry_ko":"개인전",
-			"rivalry":[
+			"rivalry":[ 
 				{
 					"rival":"[BISU]_choijh",
 					"win":0,
@@ -31,7 +43,7 @@
 			"nickname":"Toolbee",
 			"photo":"bjh.png",
 			"tribe":"Protoss",
-			"team":["서울팀", "사무실팀", "챗봇팀"],
+			"team":["서울팀", "사무실팀", "챗봇팀", "조&변팀"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
@@ -51,6 +63,18 @@
 					"opposeTeam":"제주팀",
 					"win":1,
 					"lose":4
+				},
+				{
+					"myTeam":"조&변팀",
+					"opposeTeam":"박&최팀",
+					"win":1,
+					"lose":1
+				},
+				{
+					"myTeam":"서울팀",
+					"opposeTeam":"조&박팀",
+					"win":1,
+					"lose":1
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -64,6 +88,11 @@
 					"rival":"[BISU]_choijh",
 					"win":0,
 					"lose":3
+				}, 
+				{
+					"rival":"Yakhun",
+					"win":1,
+					"lose":4
 				}
 			]
 		}, 
@@ -144,7 +173,7 @@
 			"nickname":"[BISU]_choijh",
 			"photo":"cjh-square.png",
 			"tribe":"Protoss",
-			"team":["서울팀", "제주팀"],
+			"team":["서울팀", "제주팀", "최&박팀", "서울팀"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
@@ -158,6 +187,18 @@
 					"opposeTeam":"사무실팀",
 					"win":0,
 					"lose":4
+				},
+				{
+					"myTeam":"최&박팀",
+					"opposeTeam":"조&변팀",
+					"win":1,
+					"lose":1
+				},
+				{
+					"myTeam":"서울팀",
+					"opposeTeam":"조&박팀",
+					"win":1,
+					"lose":1
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -181,6 +222,11 @@
 					"rival":"Toolbee",
 					"win":3,
 					"lose":0
+				},
+				{
+					"rival":"Yakhun",
+					"win":2,
+					"lose":1
 				}
 			]
 		}, 
@@ -260,41 +306,43 @@
 				}
 			]
 		},
-{
+		{
 
 			"seq":7,
 			"name":"조현철",
-			"nickname":"조현철",
-			"photo":"hes-square.png",
-			"tribe":"Protoss",
-			"team":["서울팀"],
+			"nickname":"Yakhun",
+			"photo":"chc-square.jpg",
+			"tribe":"Random",
+			"team":["조&변팀", "조&박팀"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"",
-					"opposeTeam":"",
-					"win":0,
-					"lose":0
+					"myTeam":"조&변팀",
+					"opposeTeam":"박&최팀",
+					"win":1,
+					"lose":1
+				},
+				{
+					"myTeam":"조&박팀",
+					"opposeTeam":"서울팀",
+					"win":1,
+					"lose":1
 				}
 			],
 			"rivalry_ko":"개인전",
 			"rivalry":[
 				{
-					"rival":"General Hwang",
-					"win":0,
-					"lose":0
+					"rival":"[BISU]_choijh",
+					"win":1,
+					"lose":2
 				}, 
 				{
-					"rival":"stygj",
-					"win":0,
-					"lose":0
-				},
-				{
 					"rival":"Toolbee",
-					"win":0,
-					"lose":0
+					"win":4,
+					"lose":1
 				}
-}
+			]
+		}
 	]
 }
 	
