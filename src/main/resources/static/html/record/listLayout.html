@@ -27,9 +27,15 @@
 	<!-- record data -->
 
 	<style type="text/css">
-		section.about img {
+		section.about .profileImg {
 			width: 120px;
 			height: 120px;
+			object-fit: contain;
+		}
+		
+		section.about .medalImg {
+			width: 60px;
+			height: 60px;
 			object-fit: contain;
 		}
 		div.pieChartDiv {
@@ -60,34 +66,9 @@ $(document).ready(function() {
 	//승률 winRate 계산하여 put
 	players = calcWinRate(players);
 	
-	// winRate 기준으로 정렬
-	players.sort(function (a, b) {
-		if (a.winRate > b.winRate) {
-	    	return -1;
-	  	}
-	  	if (a.winRate < b.winRate) {
-	    	return 1;
-	  	}
-	 	// 승률 같을 경우 '승' 다수가 상위
-	  	if (a.winRate == b.winRate) {
-			if (a.win > b.win) {
-		    	return -1;
-	  		}
-	  		if (a.win < b.win) {
-	    		return 1;
-	  		}
-	  		// '승' 같을 경우 경기수 다수가 상위
-		  	if (a.win == b.win) {
-				if (a.win+a.lose > b.win+b.lose) {
-			    	return -1;
-		  		}
-		  		if (a.win+a.lose < b.win+b.lose) {
-		    		return 1;
-		  		}
-		  		return 0;
-		  	}
-	  	}
-	});
+	//sorting
+	sortByWin(players);
+	
 	
 	if(section != null) {
 		
@@ -109,7 +90,7 @@ $(document).ready(function() {
 			chartDiv.appendChild(pieChartDiv);
 			
 			//makeBoard(section, playersFromAjax[i], playerDiv, chartDiv);
-			makeBoard(section, players[i], playerDiv, chartDiv);
+			makeBoard(i, section, players[i], playerDiv, chartDiv);
 			
 		}
 	}
@@ -149,11 +130,45 @@ function calcWinRate(players) {
 	return players;
 }
 
+
+// sort
+function sortByWin(list) {
+	// winRate 기준으로 정렬
+	list.sort(function (a, b) {
+		if (a.winRate > b.winRate) {
+	    	return -1;
+	  	}
+	  	if (a.winRate < b.winRate) {
+	    	return 1;
+	  	}
+	 	// 승률 같을 경우 '승' 다수가 상위
+	  	if (a.winRate == b.winRate) {
+			if (a.win > b.win) {
+		    	return -1;
+	  		}
+	  		if (a.win < b.win) {
+	    		return 1;
+	  		}
+	  		// '승' 같을 경우 경기수 다수가 상위
+		  	if (a.win == b.win) {
+				if (a.win+a.lose > b.win+b.lose) {
+			    	return -1;
+		  		}
+		  		if (a.win+a.lose < b.win+b.lose) {
+		    		return 1;
+		  		}
+		  		return 0;
+		  	}
+	  	}
+	});
+}
+
+
 //게시판 만들기
-function makeBoard(section, player, playerDiv, chartDiv) {
+function makeBoard(i, section, player, playerDiv, chartDiv) {
 		
 	//프로필 만들기
-	drawProfile(player, playerDiv);
+	drawProfile(i, player, playerDiv);
 	
 	//기본 정보 넣기
 	drawInfo(player, playerDiv);
@@ -176,12 +191,12 @@ function makeBoard(section, player, playerDiv, chartDiv) {
 }
 
 
-function drawProfile(player, playerDiv) {
+function drawProfile(i, player, playerDiv) {
 	var profileDiv = document.createElement('div');
 	var img = document.createElement('img');
 	var name = document.createElement('div');
 	var nickname = document.createElement('div');
-
+	
 	profileDiv.setAttribute("class", "col-sm-2 col-md-2 text-center");
 	profileDiv.setAttribute("style", "cursor:pointer;");
 	profileDiv.setAttribute("onclick", "viewDetail("+player['seq']+");");
@@ -190,9 +205,25 @@ function drawProfile(player, playerDiv) {
 	
 	img.setAttribute("src", "images/profile/"+player['photo']);
 	img.setAttribute("alt", player['nickname']);
+	img.setAttribute("class", "profileImg");
 	name.textContent = player['name'];
 	nickname.textContent = player['nickname'];
 	
+	if(i < 3) {
+		var medal = document.createElement('img');
+		medal.setAttribute("class", "medalImg");
+		if(i == 0) {
+			medal.setAttribute("src", "images/icons/augustus-gold-coin.jpg");
+			medal.setAttribute("alt", "금메달");
+		} else if(i == 1) {
+			medal.setAttribute("src", "images/icons/augustus-silver-coin.jpg");
+			medal.setAttribute("alt", "은메달");
+		} else if(i == 2) {
+			medal.setAttribute("src", "images/icons/augustus-bronze-coin.jpg");
+			medal.setAttribute("alt", "동메달");
+		}
+		profileDiv.appendChild(medal);
+	}
 	profileDiv.appendChild(img);
 	profileDiv.appendChild(name);
 	profileDiv.appendChild(nickname);
@@ -309,8 +340,6 @@ function calcChart(player) {
 
 
 function drawChart(player, chartValue) {
-	
-	
 	<!-- Chart code -->
 	// Themes begin
 	am4core.useTheme(am4themes_animated);
