@@ -215,12 +215,15 @@ function drawProfile(i, player, playerDiv) {
 		if(i == 0) {
 			medal.setAttribute("src", "images/icons/augustus-gold-coin.jpg");
 			medal.setAttribute("alt", "금메달");
+			img.style.border = "10px solid gold";
 		} else if(i == 1) {
 			medal.setAttribute("src", "images/icons/augustus-silver-coin.jpg");
 			medal.setAttribute("alt", "은메달");
+			img.style.border = "10px solid silver";
 		} else if(i == 2) {
 			medal.setAttribute("src", "images/icons/augustus-bronze-coin.jpg");
 			medal.setAttribute("alt", "동메달");
+			img.style.border = "10px solid bronze";
 		}
 		profileDiv.appendChild(medal);
 	}

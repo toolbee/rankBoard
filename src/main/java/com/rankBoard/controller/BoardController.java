@@ -47,9 +47,9 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/viewDetail", method = RequestMethod.POST)
-    public String viewDetail(@RequestParam Model model) {
-		
-		int seq = (int) model.getAttribute("seq");
+    public String viewDetail(@RequestParam Map<?,?> map, Model model) {
+
+		int seq = (int) map.get("seq");
 		model.addAttribute("seq", seq);
 		
         return "html/record/detailLayout.html";
@@ -58,7 +58,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/selectOne", method = RequestMethod.POST)
 	@ResponseBody
-    public PlayerRecord selectOne(Model model) {
+    public PlayerRecord selectOne(@RequestParam Map<?,?> map, Model model) {
 		
 		int seq = (int) model.getAttribute("seq");
 		PlayerRecord playerRecord = service.findBySeq(seq);
