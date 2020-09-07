@@ -47,9 +47,8 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/viewDetail", method = RequestMethod.POST)
-    public String viewDetail(@RequestParam Map<?,?> map, Model model) {
+    public String viewDetail(@RequestParam("seq") int seq, Model model) {
 
-		int seq = (int) map.get("seq");
 		model.addAttribute("seq", seq);
 		
         return "html/record/detailLayout.html";
