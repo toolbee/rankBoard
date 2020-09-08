@@ -37,7 +37,19 @@
 			width: 60px;
 			height: 60px;
 			object-fit: contain;
+			position: absolute;
+			top: -12%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 		}
+		
+		.laurelWreathImg {
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
 		div.pieChartDiv {
 			font-size: 13px;
 			height: 100%;
@@ -210,28 +222,38 @@ function drawProfile(i, player, playerDiv) {
 	name.textContent = player['name'];
 	nickname.textContent = player['nickname'];
 	
-	if(i < 3) {
-		var medal = document.createElement('img');
-		medal.setAttribute("class", "medalImg");
-		if(i == 0) {
-			medal.setAttribute("src", "images/icons/augustus-gold-coin.jpg");
-			medal.setAttribute("alt", "금메달");
-			img.style.border = "10px solid gold";
-		} else if(i == 1) {
-			medal.setAttribute("src", "images/icons/augustus-silver-coin.jpg");
-			medal.setAttribute("alt", "은메달");
-			img.style.border = "10px solid silver";
-		} else if(i == 2) {
-			medal.setAttribute("src", "images/icons/augustus-bronze-coin.jpg");
-			medal.setAttribute("alt", "동메달");
-			img.style.border = "10px solid bronze";
-		}
-		profileDiv.appendChild(medal);
-	}
 	profileDiv.appendChild(img);
 	profileDiv.appendChild(name);
 	profileDiv.appendChild(nickname);
 	
+	if(i < 3) {
+		var medal = document.createElement('img');
+		var laurelWreath = document.createElement('img');
+		
+		img.style.position = "relative";
+		medal.setAttribute("class", "medalImg");
+		laurelWreath.style.width = "150px";
+		laurelWreath.style.height = "auto";
+		laurelWreath.setAttribute("src", "images/icons/laurel-wreath.png");
+		laurelWreath.setAttribute("class", "laurelWreathImg");
+
+		if(i == 0) {
+			medal.setAttribute("src", "images/icons/augustus-gold-coin.jpg");
+			medal.setAttribute("alt", "금메달");
+			img.style.border = "5px solid #C99C3D";
+		} else if(i == 1) {
+			medal.setAttribute("src", "images/icons/augustus-silver-coin.jpg");
+			medal.setAttribute("alt", "은메달");
+			img.style.border = "5px solid #999999";
+		} else if(i == 2) {
+			medal.setAttribute("src", "images/icons/augustus-bronze-coin.jpg");
+			medal.setAttribute("alt", "동메달");
+			img.style.border = "5px solid #A67051";
+		}
+		profileDiv.appendChild(medal);
+		profileDiv.appendChild(laurelWreath);
+		
+	}
 	playerDiv.appendChild(profileDiv);
 }
 
