@@ -232,23 +232,29 @@ function drawProfile(i, player, playerDiv) {
 		
 		img.style.position = "relative";
 		medal.setAttribute("class", "medalImg");
-		laurelWreath.style.width = "150px";
-		laurelWreath.style.height = "auto";
-		laurelWreath.setAttribute("src", "images/icons/laurel-wreath.png");
 		laurelWreath.setAttribute("class", "laurelWreathImg");
 
 		if(i == 0) {
+			laurelWreath.setAttribute("src", "images/icons/laurel-wreath3.png");
 			medal.setAttribute("src", "images/icons/augustus-gold-coin.jpg");
 			medal.setAttribute("alt", "금메달");
 			img.style.border = "5px solid #C99C3D";
+			laurelWreath.style.width = "190px";
+			laurelWreath.style.height = "175px";
 		} else if(i == 1) {
+			laurelWreath.setAttribute("src", "images/icons/laurel-wreath2.png");
 			medal.setAttribute("src", "images/icons/augustus-silver-coin.jpg");
 			medal.setAttribute("alt", "은메달");
 			img.style.border = "5px solid #999999";
+			laurelWreath.style.width = "150px";
+			laurelWreath.style.height = "auto";
 		} else if(i == 2) {
+			laurelWreath.setAttribute("src", "images/icons/laurel-wreath.png");
 			medal.setAttribute("src", "images/icons/augustus-bronze-coin.jpg");
 			medal.setAttribute("alt", "동메달");
 			img.style.border = "5px solid #A67051";
+			laurelWreath.style.width = "150px";
+			laurelWreath.style.height = "auto";
 		}
 		profileDiv.appendChild(medal);
 		profileDiv.appendChild(laurelWreath);
