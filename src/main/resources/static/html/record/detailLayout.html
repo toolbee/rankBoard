@@ -29,21 +29,23 @@ $(document).ready(function() {
 </script>
 
 <script>
-var seq = '${seq}';
+//var seq = '${seq}';
 $(document).ready(function() {
 		
-	//selectOne(seq);
+	selectOne(seq);
 	
 })
 
 
 //selectOne
 function selectOne(seq) {
+	var obj = new Object;
+	obj.seq = seq;
 	
 	$.ajax({
         url:'/selectOne',
         type:'post',
-        data: seq,
+        data: obj,
         success: function(data) {
 
         	var section = document.querySelector('section');

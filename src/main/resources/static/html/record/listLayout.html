@@ -427,11 +427,23 @@ function selectAll() {
 
 //
 function viewDetail(seq) {
-	$.ajax({
-        url: '/viewDetail',
-        type: 'post',
-        data: seq 
-    });
+	
+	var obj = new Object;
+	obj.seq = seq;
+	
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+    form.setAttribute("method", "get"); 
+    form.setAttribute("action", "/viewDetail");
+	
+    var field = document.createElement("input");
+    field.setAttribute("type", "text");
+    field.setAttribute("name", "seq");
+    field.setAttribute("value", seq);
+    form.appendChild(field);
+    
+    document.body.appendChild(form);
+    form.submit();
 }
 
 
