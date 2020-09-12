@@ -52,17 +52,19 @@ public class BoardController {
 		model.addAttribute("seq", seq);
 		
         return "html/record/detailLayout.html";
+        //return "/selectOne";
     }
 	
 	
 	@RequestMapping(value = "/selectOne", method = RequestMethod.POST)
 	@ResponseBody
-    public PlayerRecord selectOne(@RequestParam("seq") int seq, Model model) {
+    public PlayerRecord selectOne(@RequestParam("seq") String seq, Model model) {
+		PlayerRecord playerRecord = null;
+		//String seq2 = Integer.toString(seq);
+		//PlayerRecord playerRecord = service.findBySeq(seq);
 		
-		PlayerRecord playerRecord = service.findBySeq(seq);
-		
-		model.addAttribute("playerRecord", playerRecord);
-		model.addAttribute("seq", seq);
+		//model.addAttribute("playerRecord", playerRecord);
+		//model.addAttribute("seq", seq);
 		
         return playerRecord;
     }
