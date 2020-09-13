@@ -51,8 +51,9 @@ public class BoardController {
 
 		model.addAttribute("seq", seq);
 		
-        return "html/record/detailLayout.html";
+        //return "html/record/detailLayout.html";
         //return "/selectOne";
+        return "redirect:/selectOne";
     }
 	
 	
