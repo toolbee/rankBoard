@@ -43,7 +43,7 @@ public class BoardService {
         return boardRepository.findByPlayers(name, pageable);
     }
     
-    public PlayerRecord findBySeq(int seq) {
+    public PlayerRecord findBySeq(String seq) {
         return boardRepository.findBySeq(seq);
     }
     

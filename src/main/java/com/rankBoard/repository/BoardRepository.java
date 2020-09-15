@@ -17,7 +17,7 @@ public interface BoardRepository extends ElasticsearchRepository<PlayerRecord, S
 
 	Page<PlayerRecord> findByPlayers(String name, Pageable pageable);
 	
-	PlayerRecord findBySeq(int seq);
+	PlayerRecord findBySeq(String seq);
 
 
     @Query("{\"bool\": {\"must\": [{\"match\": {\"players.name\": \"?0\"}}]}}")

@@ -51,9 +51,9 @@ public class BoardController {
 
 		model.addAttribute("seq", seq);
 		
-        //return "html/record/detailLayout.html";
+        return "html/record/detailLayout.html";
         //return "/selectOne";
-        return "redirect:/selectOne";
+        //return "redirect:/selectOne";
     }
 	
 	
@@ -62,7 +62,7 @@ public class BoardController {
     public PlayerRecord selectOne(@RequestParam("seq") String seq, Model model) {
 		PlayerRecord playerRecord = null;
 		//String seq2 = Integer.toString(seq);
-		//PlayerRecord playerRecord = service.findBySeq(seq);
+		playerRecord = service.findBySeq(seq);
 		
 		//model.addAttribute("playerRecord", playerRecord);
 		//model.addAttribute("seq", seq);
