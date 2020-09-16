@@ -3,29 +3,35 @@
 		{
 			"seq":0,
 			"name":"박현택",
-			"nickname":"kncpht",
+			"nickname":"야성패기",
 			"photo":"pht-square.png",
 			"tribe":"Protoss",
-			"team":["챗봇팀", "조&박팀", "박&최팀"],
+			"team":["박&변", "조&박", "박&최"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"챗봇팀",
-					"opposeTeam":"제주팀",
+					"myTeam":"박&변",
+					"opposeTeam":"최&황",
 					"win":1,
 					"lose":4
 				},
 				{
-					"myTeam":"박&최팀",
-					"opposeTeam":"조&변팀",
+					"myTeam":"박&최",
+					"opposeTeam":"조&변",
 					"win":1,
 					"lose":1
 				},
 				{
 					"myTeam":"조&박팀",
-					"opposeTeam":"서울팀",
+					"opposeTeam":"최&변",
 					"win":1,
 					"lose":1
+				},
+				{
+					"myTeam":"이&변",
+					"opposeTeam":"박&최",
+					"win":0,
+					"lose":2
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -33,8 +39,19 @@
 				{
 					"rival":"[BISU]_choijh",
 					"win":0,
-					"lose":2
+					"lose":3
+				}, 
+				{
+					"rival":"FC_KEKE",
+					"win":0,
+					"lose":1
+				}, 
+				{
+					"rival":"Toolbee",
+					"win":1,
+					"lose":1
 				}
+				
 			]
 		}, 
 		{
@@ -43,38 +60,44 @@
 			"nickname":"Toolbee",
 			"photo":"bjh.png",
 			"tribe":"Protoss",
-			"team":["서울팀", "사무실팀", "챗봇팀", "조&변팀"],
+			"team":["최&변", "이&변", "박&변", "조&변"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"서울팀",
-					"opposeTeam":"경기팀",
+					"myTeam":"최&변",
+					"opposeTeam":"이&황",
 					"win":2,
 					"lose":2
 				},
 				{
-					"myTeam":"사무실팀",
-					"opposeTeam":"제주팀",
+					"myTeam":"이&변",
+					"opposeTeam":"최&황",
 					"win":4,
 					"lose":0
 				},
 				{
-					"myTeam":"챗봇팀",
-					"opposeTeam":"제주팀",
+					"myTeam":"박&변",
+					"opposeTeam":"최&황",
 					"win":1,
 					"lose":4
 				},
 				{
 					"myTeam":"조&변팀",
-					"opposeTeam":"박&최팀",
+					"opposeTeam":"박&최",
 					"win":1,
 					"lose":1
 				},
 				{
-					"myTeam":"서울팀",
-					"opposeTeam":"조&박팀",
+					"myTeam":"최&변",
+					"opposeTeam":"조&박",
 					"win":1,
 					"lose":1
+				},
+				{
+					"myTeam":"이&변",
+					"opposeTeam":"박&최",
+					"win":2,
+					"lose":0
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -87,12 +110,22 @@
 				{
 					"rival":"[BISU]_choijh",
 					"win":0,
-					"lose":3
+					"lose":4
 				}, 
 				{
 					"rival":"Yakhun",
 					"win":1,
 					"lose":4
+				}, 
+				{
+					"rival":"FC_KEKE",
+					"win":0,
+					"lose":1
+				}, 
+				{
+					"rival":"야성패기",
+					"win":1,
+					"lose":1
 				}
 			]
 		}, 
@@ -102,7 +135,7 @@
 			"nickname":"stygj",
 			"photo":"ygj-square.png",
 			"tribe":"Terran",
-			"team":["사무실팀"],
+			"team":[],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
@@ -137,19 +170,25 @@
 			"nickname":"FC_KEKE",
 			"photo":"lku-square.png",
 			"tribe":"Zerg",
-			"team":["경기팀", "사무실팀"],
+			"team":["이&황", "이&변"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"경기팀",
-					"opposeTeam":"서울팀",
+					"myTeam":"이&황",
+					"opposeTeam":"최&변",
 					"win":2,
 					"lose":2
 				},
 				{
-					"myTeam":"사무실팀",
-					"opposeTeam":"제주팀",
+					"myTeam":"이&변",
+					"opposeTeam":"최&황",
 					"win":4,
+					"lose":0
+				},
+				{
+					"myTeam":"이&변",
+					"opposeTeam":"박&최",
+					"win":2,
 					"lose":0
 				}
 			],
@@ -157,12 +196,22 @@
 			"rivalry":[
 				{
 					"rival":"[BISU]_choijh",
-					"win":3,
+					"win":5,
 					"lose":0
 				},
 				{
 					"rival":"General Hwang",
 					"win":2,
+					"lose":0
+				},
+				{
+					"rival":"Toolbee",
+					"win":1,
+					"lose":0
+				},
+				{
+					"rival":"야성패기",
+					"win":1,
 					"lose":0
 				}
 			]
@@ -173,32 +222,38 @@
 			"nickname":"[BISU]_choijh",
 			"photo":"cjh-square.png",
 			"tribe":"Protoss",
-			"team":["서울팀", "제주팀", "최&박팀", "서울팀"],
+			"team":["최&변", "최&황", "박&최"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"서울팀",
-					"opposeTeam":"경기팀",
+					"myTeam":"최&변",
+					"opposeTeam":"이&황",
 					"win":2,
 					"lose":2
 				},
 				{
-					"myTeam":"제주팀",
-					"opposeTeam":"사무실팀",
+					"myTeam":"최&황",
+					"opposeTeam":"이&변",
 					"win":0,
 					"lose":4
 				},
 				{
-					"myTeam":"최&박팀",
-					"opposeTeam":"조&변팀",
+					"myTeam":"박&최",
+					"opposeTeam":"조&변",
 					"win":1,
 					"lose":1
 				},
 				{
-					"myTeam":"서울팀",
-					"opposeTeam":"조&박팀",
+					"myTeam":"최&변",
+					"opposeTeam":"조&박",
 					"win":1,
 					"lose":1
+				},
+				{
+					"myTeam":"박&최",
+					"opposeTeam":"이&변",
+					"win":0,
+					"lose":2
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -206,11 +261,11 @@
 				{
 					"rival":"FC_KEKE",
 					"win":0,
-					"lose":3
+					"lose":5
 				},
 				{
-					"rival":"kncpht",
-					"win":2,
+					"rival":"야성패기",
+					"win":3,
 					"lose":0
 				},
 				{
@@ -220,7 +275,7 @@
 				},
 				{
 					"rival":"Toolbee",
-					"win":3,
+					"win":4,
 					"lose":0
 				},
 				{
@@ -236,18 +291,18 @@
 			"nickname":"General Hwang",
 			"photo":"hsc-square.png",
 			"tribe":"Protoss",
-			"team":["경기팀", "제주팀"],
+			"team":["이&황", "최&황"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"경기팀",
-					"opposeTeam":"서울팀",
+					"myTeam":"이&황",
+					"opposeTeam":"최&변",
 					"win":2,
 					"lose":2
 				},
 				{
-					"myTeam":"제주팀",
-					"opposeTeam":"사무실팀",
+					"myTeam":"최&황",
+					"opposeTeam":"이&변",
 					"win":0,
 					"lose":4
 				}
@@ -277,7 +332,7 @@
 			"nickname":"황은상",
 			"photo":"hes-square.png",
 			"tribe":"Protoss",
-			"team":["서울팀"],
+			"team":[],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
@@ -313,18 +368,18 @@
 			"nickname":"Yakhun",
 			"photo":"chc-square.jpg",
 			"tribe":"Random",
-			"team":["조&변팀", "조&박팀"],
+			"team":["조&변", "조&박"],
 			"teamMatch_ko":"팀전",
 			"teamMatch":[
 				{
-					"myTeam":"조&변팀",
-					"opposeTeam":"박&최팀",
+					"myTeam":"조&변",
+					"opposeTeam":"박&최",
 					"win":1,
 					"lose":1
 				},
 				{
 					"myTeam":"조&박팀",
-					"opposeTeam":"서울팀",
+					"opposeTeam":"최&변",
 					"win":1,
 					"lose":1
 				}
