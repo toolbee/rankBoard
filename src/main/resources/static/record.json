@@ -280,8 +280,8 @@
 				},
 				{
 					"rival":"Yakhun",
-					"win":2,
-					"lose":1
+					"win":4,
+					"lose":3
 				}
 			]
 		}, 
@@ -388,8 +388,8 @@
 			"rivalry":[
 				{
 					"rival":"[BISU]_choijh",
-					"win":1,
-					"lose":2
+					"win":3,
+					"lose":4
 				}, 
 				{
 					"rival":"Toolbee",
