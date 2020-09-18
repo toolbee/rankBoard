@@ -19,6 +19,43 @@
 	<script src="javascript/includeHTML.js"></script>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- amchart 4 -->
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
+
+	<style type="text/css">
+		section.about .profileImg {
+			width: 120px;
+			height: 120px;
+			object-fit: contain;
+		}
+		
+		section.about .medalImg {
+			width: 60px;
+			height: 60px;
+			object-fit: contain;
+			position: absolute;
+			top: -12%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
+		.laurelWreathImg {
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
+		div.pieChartDiv {
+			font-size: 13px;
+			height: 100%;
+		}
+		
+	</style>
 </head>
 
 <script>
@@ -29,10 +66,36 @@ $(document).ready(function() {
 </script>
 
 <script>
-
+var records = $.getJSON("record.json");
 $(document).ready(function() {
-	var seq = "${seq}";
-	selectOne(seq);
+	var players = records["responseJSON"]["players"];
+	
+	var url = unescape(location.href); // ex) http://localhost:8080/viewDetail?seq=3
+	var numUrl = url.split('='); // numUrl[0] = http: ~ , numUrl[1] = 3 
+	var num = numUrl[1];
+	
+	//selectOne(num);
+	var playerRecord = players[num];
+	
+	var section = document.querySelector('section');
+	var playerDiv;
+	var chartDiv;
+	
+	//플레이어 영역 만들기
+	playerDiv = document.createElement('div');
+	playerDiv.setAttribute("class", "row member animateOnScroll");
+	playerDiv.setAttribute("data-animation", "fadeInUp");
+
+	//차트 영역 미리 만들기 
+	chartDiv = document.createElement('div');
+	var pieChartDiv = document.createElement('div');
+	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
+	pieChartDiv.setAttribute("id", "recordChart");
+	pieChartDiv.setAttribute("class", "pieChartDiv");
+	
+	chartDiv.appendChild(pieChartDiv);
+
+	makeBoard(section, playerRecord, playerDiv, chartDiv);
 	
 })
 
@@ -52,31 +115,25 @@ function selectOne(seq) {
         	var playerDiv;
         	var chartDiv;
         	
-        	makeSpace(playerDiv, chartDiv);
+        	//플레이어 영역 만들기
+        	playerDiv = document.createElement('div');
+        	playerDiv.setAttribute("class", "row member animateOnScroll");
+        	playerDiv.setAttribute("data-animation", "fadeInUp");
+
+        	//차트 영역 미리 만들기 
+        	chartDiv = document.createElement('div');
+        	var pieChartDiv = document.createElement('div');
+        	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
+        	pieChartDiv.setAttribute("id", "recordChart");
+        	pieChartDiv.setAttribute("class", "pieChartDiv");
+        	
+        	chartDiv.appendChild(pieChartDiv);
 
         	makeBoard(section, data, playerDiv, chartDiv);
         }
     });
 }
 
-
-//영역 만들기
-function makeSpace(playerDiv, chartDiv) {
-	//플레이어 영역 만들기
-	playerDiv = document.createElement('div');
-	playerDiv.setAttribute("class", "row member animateOnScroll");
-	playerDiv.setAttribute("data-animation", "fadeInUp");
-
-	//차트 영역 미리 만들기 
-	chartDiv = document.createElement('div');
-	var pieChartDiv = document.createElement('div');
-	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
-	pieChartDiv.setAttribute("id", "recordChart_" + i);
-	pieChartDiv.setAttribute("class", "pieChartDiv");
-	
-	chartDiv.appendChild(pieChartDiv);
-}
-	
 
 //게시판 만들기
 function makeBoard(section, player, playerDiv, chartDiv) {
@@ -116,6 +173,7 @@ function drawProfile(player, playerDiv) {
 	
 	img.setAttribute("src", "images/profile/"+player['photo']);
 	img.setAttribute("alt", player['nickname']);
+	img.setAttribute("class", "profileImg");
 	name.textContent = player['name'];
 	nickname.textContent = player['nickname'];
 	
@@ -233,7 +291,7 @@ function drawChart(player, chartValue) {
 	//am4core.useTheme(am4themes_kelly);
 	// Themes end
 	
-	var chart = am4core.create("recordChart_" + player["seq"], am4charts.PieChart);
+	var chart = am4core.create("recordChart", am4charts.PieChart);
 	chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 	
 	chart.data = chartValue;
@@ -261,7 +319,7 @@ function drawChart(player, chartValue) {
 	];
 	chart.legend = new am4charts.Legend();
 
-	
+	chart.logo.height = -5000;	
 }
 
 </script>
@@ -269,7 +327,23 @@ function drawChart(player, chartValue) {
 <body>
 
 	<header id="headerDiv" ></header>
-    <div class="container" include-html="html/record/detail.html"></div>
+    <div class="container">
+    	<div class="row">
+			<div class="col-md-12 col-lg-10 col-lg-offset-1 page-indent">
+				<article class="content">
+					<section class="about">
+						<div class="row header">
+							<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+								<h2>Our team</h2>
+								<p class="text-center">끝 없는 전투 속에 남은 것은 승리뿐.</p>
+							</div>
+						</div>
+						<!-- 플레이어 record append 공간 -->						
+					</section>
+				</article>
+			</div>
+		</div>
+    </div>
     <footer id="footerDiv" class="page-footer" ></footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
