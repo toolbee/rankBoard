@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rank Board Website</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="javascript/pace.min.js"></script>
+	<script src="javascript/includeHTML.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- amchart 4 -->
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/kelly.js"></script>
+
+	<!-- record data -->
+
+	<style type="text/css">
+		section.about .profileImg {
+			width: 120px;
+			height: 120px;
+			object-fit: contain;
+		}
+		
+		section.about .medalImg {
+			width: 60px;
+			height: 60px;
+			object-fit: contain;
+			position: absolute;
+			top: -12%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
+		.laurelWreathImg {
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		
+		div.pieChartDiv {
+			font-size: 13px;
+			height: 100%;
+		}
+		
+	</style>
+</head>
+
+<script>
+	$(document).ready(function() {
+		$("#headerDiv").load("html/include/header.html");
+		$("#footerDiv").load("html/include/footer.html");
+	});
+</script>
+
+<script type="text/javascript">
+
+var records = $.getJSON("records.json");
+
+$(document).ready(function() {
+	
+//var playersFromAjax = selectAll();
+	
+	var records = records["responseJSON"]["records"];
+	var div = document.querySelector('.menu-card');
+	
+	makeBoard(div, records);
+			
+})
+
+
+//게시판 만들기
+function makeBoard(div, records) {
+		
+	var h2 = document.createElement('h2');
+	var ul = document.createElement('ul');
+	h2.setAttribute("class", "decoration-stars");
+	
+	div.append(h2);
+	div.append(ul);
+
+	for(var i=0; i<records.length; i++) {
+		var racord = records[i];
+		
+		var li = document.createElement('li');
+		var div2 = document.createElement('div');
+		
+		var span1 = document.createElement('span');
+		if(record["type"] == 0) {
+			span1.textContent = "개인전";
+		} else {
+			span1.textContent = "팀전";
+		}
+		
+		var p1 = document.createElement('p');
+		p1.setAttribute("class", "name");
+		
+		var span = document.createElement('span');
+		span.textContent = record["team1Name"]+" VS. "+record["team1Name"];
+		
+		var p2 = document.createElement('p');
+		p2.setAttribute("class", "price");
+		if(record["winner"] == "team1") p2.textContent(record["team1Name"]); 
+		else p2.textContent(record["team1Name"]);
+		
+		var p3 = document.createElement('p');
+		p3.setAttribute("class", "mute");
+		var s = "";
+		for(j=0; j<record["team1"].length; j++) {
+			s = s + record["team1"][j]+" VS. "+record["team2"][j]+"/n";
+		}
+		p3.textContent = s;
+		
+		var p4 = document.createElement('p');
+		p4.setAttribute("class", "mute");
+		p4.textContent = record["datetime"];
+				
+		p1.append(span)
+		div2.append(span1);
+		div2.append(p1);
+		div2.append(p2);
+		il.append(div2);
+		il.append(p3);
+		il.append(p4);
+		
+		div.append(li);
+	}
+	
+}
+
+
+
+
+function drawInfo(player, playerDiv) {
+	var infoDiv = document.createElement('div');
+	var ul = document.createElement('ul');
+	infoDiv.setAttribute("class", "col-sm-2 col-md-2");
+	var titleArr = ['소속팀', '주종족', '총 스코어'];
+	
+	for(var i=0; i<3; i++) {
+		var li = document.createElement('li');
+		var title = document.createElement('div');
+		var item = document.createElement('div');
+		
+		title.setAttribute("class", "title");
+		title.textContent = titleArr[i];
+		
+		item.setAttribute("class", "title");
+		if(i == 0) item.textContent = player['team'];
+		if(i == 1) item.textContent = player['tribe'];
+		if(i == 2) item.textContent = '(개인) ' + player['win'] + '승 ' + player['lose'] + '패';
+			
+		li.appendChild(title);
+		li.appendChild(item);
+		ul.appendChild(li);
+	}
+	infoDiv.appendChild(ul);
+	playerDiv.appendChild(infoDiv);
+}
+
+
+function drawRecord(player, playerDiv) {
+	var recordDiv = document.createElement('div');
+	var ul = document.createElement('ul');
+	recordDiv.setAttribute("class", "col-sm-5 col-md-5");
+	
+	for(var i=0; i<2; i++) {
+		var li = document.createElement('li');
+		var title = document.createElement('div');
+		var itemDiv = document.createElement('div');
+		var ul_sub = document.createElement('ul');
+		
+		title.setAttribute("class", "title");
+		itemDiv.setAttribute("class", "title");
+		
+		if(i == 0) {
+			title.textContent = player['teamMatch_ko'];
+			
+			var teamMatch = player['teamMatch'];
+			for(var j=0; j<teamMatch.length; j++) {
+				var listItem = document.createElement('li');
+		   		listItem.textContent = teamMatch[j].myTeam + '(me) VS. ' + teamMatch[j].opposeTeam + ' : ' + teamMatch[j].win + '승 ' + teamMatch[j].lose + '패';
+		   		ul_sub.appendChild(listItem);
+			}
+			itemDiv.appendChild(ul_sub);
+		}
+		
+		if(i == 1) {
+			title.textContent = player['rivalry_ko'];
+			
+			var rivalry = player['rivalry'];
+		    for(var j=0; j<rivalry.length; j++) {
+		   		var listItem = document.createElement('li');
+		   		listItem.textContent = 'VS. ' + rivalry[j].rival + ' : ' + rivalry[j].win + '승 ' + rivalry[j].lose + '패';
+		   		ul_sub.appendChild(listItem);
+		    }
+		    itemDiv.appendChild(ul_sub);
+		}
+		li.appendChild(title);
+		li.appendChild(itemDiv);
+		ul.appendChild(li);
+	}
+	recordDiv.appendChild(ul);
+	playerDiv.appendChild(recordDiv);
+}
+
+
+//selectAll
+function selectAll() {
+	$.ajax({
+        url:'/selectAll',
+        type:'post',
+        success: function(data) {
+        	
+        	if(data == "S") {
+				
+        	}
+        }
+    });
+}
+
+//
+function viewDetail(seq) {
+	
+	var obj = new Object;
+	obj.seq = seq;
+	
+	var form = document.createElement("form");
+	form.setAttribute("charset", "UTF-8");
+    form.setAttribute("method", "get"); 
+    form.setAttribute("action", "/viewDetail");
+	
+    var field = document.createElement("input");
+    field.setAttribute("type", "text");
+    field.setAttribute("name", "seq");
+    field.setAttribute("value", seq);
+    form.appendChild(field);
+    
+    document.body.appendChild(form);
+    form.submit();
+}
+
+
+</script>
+
+<body>
+	<header id="headerDiv" ></header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 hidden-xs">
+				<div class="cover lead-photo">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-lg-10 col-lg-offset-1 menu-card page-indent">
+				<h2 class="decoration-stars">appetizers</h2>
+				<ul>
+					<li>
+						<div>
+							<p class="name"><span>Vivamus quis mattis risus</span>
+							</p>
+							<p class="price">$9.99</p>
+						</div>
+						<p class="mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</li>
+					<li>
+						<div>
+							<p class="name"><span>Aenean quam lectus</span>
+							</p>
+							<p class="price">$4.99</p>
+						</div>
+						<p class="mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</li>
+					<li>
+						<div>
+							<p class="name"><span>Convallis in sollicitudin</span>
+							</p>
+							<p class="price">$9.99</p>
+						</div>
+						<p class="mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</li>
+					<li>
+						<div>
+							<p class="name"><span>Maecenas non tellus</span>
+							</p>
+							<p class="price">$19.99</p>
+						</div>
+						<p class="mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</li>
+					<li>
+						<div>
+							<p class="name"><span>Quisque quis molestie elit</span>
+							</p>
+							<p class="price">$12.99</p>
+						</div>
+						<p class="mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</li>
+					<li>
+						<div>
+							<p class="name"><span>Proin ante purus, viverra sit amet cursus nec</span>
+							</p>
+							<p class="price">$12.99</p>
+						</div>
+						<p class="mute">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+    <footer id="footerDiv" class="page-footer" ></footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="javascript/animate-on-scroll.js"></script>
+	<script src="javascript/script.js"></script>
+</body>
+
+</html>

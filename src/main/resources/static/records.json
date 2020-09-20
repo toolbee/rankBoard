@@ -1,0 +1,50 @@
+{
+	"records": [{
+		"seq":1,
+		"type":0,
+		"team1": [
+			{
+				"nickname":"야성패기",
+				"tribe":"protoss"
+			}
+		],
+		"team2": [{
+			"nickname":"Toolbee",
+			"tribe":"protoss"
+		}],
+		"team1Name": "야성패기",
+		"team2Name": "Toolbee",
+		"datetime":"2020-09-20 09:00:00",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":2,
+		"type":1,
+		"team1": [{
+			"nickname":"야성패기",
+			"tribe":"protoss"
+		},
+		{
+			"nickname":"[BISU]_choijh",
+			"tribe":"protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"FC_KEKE",
+			"tribe":"zerg"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"protoss"
+		}
+		],
+		"team1Name": "야성패기 & [BISU]_choijh",
+		"team2Name": "FC_KEKE & Toolbee",
+		"datetime":"2020-09-20 09:00:00",
+		"winner":"team2",
+		"loser":"team1"
+	}
+	] 
+}
+	

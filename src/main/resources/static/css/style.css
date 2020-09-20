@@ -367,7 +367,9 @@ blockquote footer {
   height: 400px;
 }
 .lead-photo {
-  background: url('../images/food-salad-healthy-colorful.jpg') no-repeat center center scroll;
+  /* background: url('../images/food-salad-healthy-colorful.jpg') no-repeat center center scroll;
+   */
+  background: url('../images/logos/parthenon.jpg') no-repeat center center scroll;
   height: 400px;
 }
 .page-indent {
