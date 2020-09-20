@@ -20,3 +20,8 @@ JavaScript sorting 기능 추가
 
 - JAR 또는 WAR 배포
 접속 URL : http://rankboard.toolbee.in
+
+- docker 배포
+—- docker-compose
+  nginx and tomcat
+  elastic stack(elastic search, kibana)
