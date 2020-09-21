@@ -44,6 +44,33 @@
 		"datetime":"2020-09-20 09:00:00",
 		"winner":"team2",
 		"loser":"team1"
+	},	 
+	{
+		"seq":3,
+		"type":1,
+		"team1": [{
+			"nickname":"야성패기",
+			"tribe":"protoss"
+		},
+		{
+			"nickname":"[BISU]_choijh",
+			"tribe":"protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"FC_KEKE",
+			"tribe":"zerg"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"protoss"
+		}
+		],
+		"team1Name": "야성패기 & [BISU]_choijh",
+		"team2Name": "FC_KEKE & Toolbee",
+		"datetime":"2020-09-20 09:00:00",
+		"winner":"team2",
+		"loser":"team1"
 	}
 	] 
 }
