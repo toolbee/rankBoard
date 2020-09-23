@@ -71,6 +71,26 @@
 		"datetime":"2020-09-20 09:00:00",
 		"winner":"team2",
 		"loser":"team1"
+	},	 
+	{
+		"seq":4,
+		"type":0,
+		"team1": [{
+		
+			"nickname":"[BISU]_choijh",
+			"tribe":"Protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"FC_KEKE",
+			"tribe":"Terran"
+		}
+		],
+		"team1Name": "[BISU]_choijh",
+		"team2Name": "FC_KEKE",
+		"datetime":"2020-09-22 21:30:00",
+		"winner":"team1",
+		"loser":"team2"
 	}
 	] 
 }
