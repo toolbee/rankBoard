@@ -1,21 +1,13 @@
 package com.rankBoard.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.rankBoard.domain.PlayerRecord;
 import com.rankBoard.service.BoardService;
 
 @Controller	
@@ -37,10 +29,8 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/viewDetail", method = RequestMethod.GET)
-    public String viewDetail(@RequestParam("seq") int seq, Model model) {
+    public String viewDetail(@RequestParam("seq") int seq) {
 
-		model.addAttribute("seq", seq);
-		
         return "html/record/detailLayout.html";
     }
 	

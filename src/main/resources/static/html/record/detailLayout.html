@@ -67,9 +67,12 @@ $(document).ready(function() {
 
 <script>
 var records = $.getJSON("players.json");
+
 $(document).ready(function() {
+	
 	var players = records["responseJSON"]["players"];
 	
+	//URL에서 파라미터 추출
 	var url = unescape(location.href); // ex) http://localhost:8080/viewDetail?seq=3
 	var numUrl = url.split('='); // numUrl[0] = http: ~ , numUrl[1] = 3 
 	var num = numUrl[1];
@@ -77,23 +80,27 @@ $(document).ready(function() {
 	//selectOne(num);
 	var playerRecord = players[num];
 	
-	var section = document.querySelector('section');
+	var section = document.querySelector("section");
 	var playerDiv;
 	var chartDiv;
 	
 	//플레이어 영역 만들기
-	playerDiv = document.createElement('div');
-	playerDiv.setAttribute("class", "row member animateOnScroll");
-	playerDiv.setAttribute("data-animation", "fadeInUp");
+	playerDiv = document.createElement("div");
+	playerDiv.setAttribute("class", "row member");
 
 	//차트 영역 미리 만들기 
-	chartDiv = document.createElement('div');
-	var pieChartDiv = document.createElement('div');
-	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
-	pieChartDiv.setAttribute("id", "recordChart");
-	pieChartDiv.setAttribute("class", "pieChartDiv");
+	chartDiv = document.createElement("div");
+	chartDiv.setAttribute("class", "col-sm-6 col-md-6");
 	
-	chartDiv.appendChild(pieChartDiv);
+	var pieChartDiv1 = document.createElement("div");
+	pieChartDiv1.setAttribute("id", "recordChart0");
+	pieChartDiv1.setAttribute("class", "pieChartDiv");
+	var pieChartDiv2 = document.createElement("div");
+	pieChartDiv2.setAttribute("id", "recordChart1");
+	pieChartDiv2.setAttribute("class", "pieChartDiv");
+	
+	chartDiv.appendChild(pieChartDiv1);
+	chartDiv.appendChild(pieChartDiv2);
 
 	makeBoard(section, playerRecord, playerDiv, chartDiv);
 	
@@ -153,11 +160,13 @@ function makeBoard(section, player, playerDiv, chartDiv) {
 	//전체 영역div에 차트div 어펜드
 	playerDiv.appendChild(chartDiv);
 	
-	//차트 계산
-	var chartValue = calcChart(player);
-	
-	//차트 그리기
-	drawChart(player, chartValue);
+	for(i=0; i<2; i++) { // 0 : 개인전, 1 : 팀전
+		//차트 계산
+		var chartValue = calcChart(player, i);
+		//차트 그리기
+		drawChart(player, chartValue, i);
+	} 
+		
 }
 
 
@@ -167,9 +176,9 @@ function drawProfile(player, playerDiv) {
 	var name = document.createElement('div');
 	var nickname = document.createElement('div');
 
-	profileDiv.setAttribute("class", "col-sm-2 col-md-2 text-center");
-	name.setAttribute("class", "name");
-	nickname.setAttribute("class", "nickname");
+	profileDiv.setAttribute("class", "col-sm-4 col-md-4 text-center");
+	name.setAttribute("class", "name col-sm-6 col-md-6");
+	nickname.setAttribute("class", "nickname col-sm-6 col-md-6");
 	
 	img.setAttribute("src", "images/profile/"+player['photo']);
 	img.setAttribute("alt", player['nickname']);
@@ -188,7 +197,7 @@ function drawProfile(player, playerDiv) {
 function drawInfo(player, playerDiv) {
 	var infoDiv = document.createElement('div');
 	var ul = document.createElement('ul');
-	infoDiv.setAttribute("class", "col-sm-2 col-md-2");
+	infoDiv.setAttribute("class", "col-sm-8 col-md-8");
 	var titleArr = ['소속팀', '주종족', '총 스코어'];
 	
 	for(var i=0; i<3; i++) {
@@ -216,7 +225,7 @@ function drawInfo(player, playerDiv) {
 function drawRecord(player, playerDiv) {
 	var recordDiv = document.createElement('div');
 	var ul = document.createElement('ul');
-	recordDiv.setAttribute("class", "col-sm-5 col-md-5");
+	recordDiv.setAttribute("class", "col-sm-6 col-md-6");
 	
 	for(var i=0; i<2; i++) {
 		var li = document.createElement('li');
@@ -259,17 +268,21 @@ function drawRecord(player, playerDiv) {
 }
 
 
-function calcChart(player) {
-	var rivalry = player['rivalry'];
+function calcChart(player, i) {
+	var data;
+	
+	if(i == 0) data = player["rivalry"];
+	if(i == 1) data = player["teamMatch"];
+	
 	var arr = new Array();
 	var obj1 = new Object();
 	var obj2 = new Object();
 	var win = 0;
 	var lose = 0;
 	
-	for(var i=0; i<rivalry.length; i++) {
-		win = win + rivalry[i].win;
-		lose = lose + rivalry[i].lose;
+	for(var i=0; i<data.length; i++) {
+		win = win + data[i].win;
+		lose = lose + data[i].lose;
 	}
 	obj1.record = "win";
 	obj1.value = win;
@@ -282,7 +295,7 @@ function calcChart(player) {
 }
 
 
-function drawChart(player, chartValue) {
+function drawChart(player, chartValue, i) {
 	
 	
 	<!-- Chart code -->
@@ -291,7 +304,7 @@ function drawChart(player, chartValue) {
 	//am4core.useTheme(am4themes_kelly);
 	// Themes end
 	
-	var chart = am4core.create("recordChart", am4charts.PieChart);
+	var chart = am4core.create("recordChart" + i, am4charts.PieChart);
 	chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 	
 	chart.data = chartValue;
