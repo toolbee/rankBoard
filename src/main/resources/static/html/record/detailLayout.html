@@ -90,14 +90,14 @@ $(document).ready(function() {
 
 	//차트 영역 미리 만들기 
 	chartDiv = document.createElement("div");
-	chartDiv.setAttribute("class", "col-sm-6 col-md-6");
+	chartDiv.setAttribute("class", "col-sm-12 col-md-12");
 	
 	var pieChartDiv1 = document.createElement("div");
 	pieChartDiv1.setAttribute("id", "recordChart0");
-	pieChartDiv1.setAttribute("class", "pieChartDiv");
+	pieChartDiv1.setAttribute("class", "pieChartDiv col-sm-6 col-md-6");
 	var pieChartDiv2 = document.createElement("div");
 	pieChartDiv2.setAttribute("id", "recordChart1");
-	pieChartDiv2.setAttribute("class", "pieChartDiv");
+	pieChartDiv2.setAttribute("class", "pieChartDiv col-sm-6 col-md-6");
 	
 	chartDiv.appendChild(pieChartDiv1);
 	chartDiv.appendChild(pieChartDiv2);
@@ -130,9 +130,9 @@ function selectOne(seq) {
         	//차트 영역 미리 만들기 
         	chartDiv = document.createElement('div');
         	var pieChartDiv = document.createElement('div');
-        	chartDiv.setAttribute("class", "col-sm-3 col-md-3");
+        	chartDiv.setAttribute("class", "col-sm-12 col-md-12");
         	pieChartDiv.setAttribute("id", "recordChart");
-        	pieChartDiv.setAttribute("class", "pieChartDiv");
+        	pieChartDiv.setAttribute("class", "pieChartDiv col-sm-6 col-md-6");
         	
         	chartDiv.appendChild(pieChartDiv);
 
@@ -176,7 +176,7 @@ function drawProfile(player, playerDiv) {
 	var name = document.createElement('div');
 	var nickname = document.createElement('div');
 
-	profileDiv.setAttribute("class", "col-sm-4 col-md-4 text-center");
+	profileDiv.setAttribute("class", "col-sm-3 col-md-3 text-center");
 	name.setAttribute("class", "name col-sm-6 col-md-6");
 	nickname.setAttribute("class", "nickname col-sm-6 col-md-6");
 	
@@ -197,7 +197,7 @@ function drawProfile(player, playerDiv) {
 function drawInfo(player, playerDiv) {
 	var infoDiv = document.createElement('div');
 	var ul = document.createElement('ul');
-	infoDiv.setAttribute("class", "col-sm-8 col-md-8");
+	infoDiv.setAttribute("class", "col-sm-3 col-md-3");
 	var titleArr = ['소속팀', '주종족', '총 스코어'];
 	
 	for(var i=0; i<3; i++) {

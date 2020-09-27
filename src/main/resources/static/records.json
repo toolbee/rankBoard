@@ -91,6 +91,146 @@
 		"datetime":"2020-09-22 21:30:00",
 		"winner":"team1",
 		"loser":"team2"
+	},	 
+	{
+		"seq":5,
+		"type":1,
+		"team1": [{
+		
+			"nickname":"Yakhun",
+			"tribe":"random(Terran)"
+		},
+		{
+			"nickname":"General Hwang",
+			"tribe":"Protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"야성패기",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"Protoss"
+		}
+		],
+		"team1Name": "조&황",
+		"team2Name": "박&변",
+		"datetime":"2020-09-26 21:11:00",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":6,
+		"type":1,
+		"team1": [{
+		
+			"nickname":"Yakhun",
+			"tribe":"random(Terran)"
+		},
+		{
+			"nickname":"General Hwang",
+			"tribe":"Protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"야성패기",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"Protoss"
+		}
+		],
+		"team1Name": "조&황",
+		"team2Name": "박&변",
+		"datetime":"2020-09-26 21:25:00",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":7,
+		"type":1,
+		"team1": [{
+		
+			"nickname":"[BISU]_choijh",
+			"tribe":"random(Terran)"
+		},
+		{
+			"nickname":"General Hwang",
+			"tribe":"Protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"야성패기",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"Protoss"
+		}
+		],
+		"team1Name": "최&황",
+		"team2Name": "박&변",
+		"datetime":"2020-09-26 21:42:00",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":8,
+		"type":1,
+		"team1": [{
+		
+			"nickname":"[BISU]_choijh",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"General Hwang",
+			"tribe":"Protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"야성패기",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"Protoss"
+		}
+		],
+		"team1Name": "최&황",
+		"team2Name": "박&변",
+		"datetime":"2020-09-26 21:53:00",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":9,
+		"type":1,
+		"team1": [{
+		
+			"nickname":"[BISU]_choijh",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"General Hwang",
+			"tribe":"Protoss"
+		}
+		],
+		"team2": [{
+			"nickname":"야성패기",
+			"tribe":"Protoss"
+		},
+		{
+			"nickname":"Toolbee",
+			"tribe":"Protoss"
+		}
+		],
+		"team1Name": "최&황",
+		"team2Name": "박&변",
+		"datetime":"2020-09-26 22:08:00",
+		"winner":"team1",
+		"loser":"team2"
 	}
 	] 
 }

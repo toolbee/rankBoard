@@ -1,3 +1,16 @@
+<script>
+//contextPath 구하기
+function getContextPath() {
+  //var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+  //return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+	return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+};
+
+function goPage(page) {
+	 location.href = getContextPath() + page;
+}
+</script>
+
 <div class="container hidden-xs ">
 	<h1>
 		<a href="#" style="text-decoration: none; ">
@@ -25,7 +38,7 @@
 					<li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">Main</a>
 						<ul class="dropdown-menu">
 							<li class="dropdown-submenu">
-								<a href="/list">랭크</a>
+								<a href="#" onclick="goPage('list')">랭크</a>
 							</li>
 				
 						</ul>
@@ -33,7 +46,7 @@
 					<li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#">기록</a>
 						<ul class="dropdown-menu">
 							<li class="dropdown-submenu">
-								<a href="matchList">매치 기록</a>
+								<a href="#" onclick="goPage('matchList')">매치 기록</a>
 							</li>
 							<!-- <li class="dropdown-submenu">
 								<a data-toggle="dropdown" class="trigger dropdown-toggle" href="#">Pages <span class="pull-right"><i class="fa fa-angle-right"></i></span></a>

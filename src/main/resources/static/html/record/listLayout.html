@@ -107,6 +107,15 @@ $(document).ready(function() {
 	}
 })
 
+
+//contextPath 구하기
+function getContextPath() {
+  //var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+  //return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+	return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+};
+
+
 //승률 winRate 계산하여 put
 function calcWinRate(players) {
 	
@@ -432,7 +441,7 @@ function viewDetail(seq) {
 	var form = document.createElement("form");
 	form.setAttribute("charset", "UTF-8");
     form.setAttribute("method", "get"); 
-    form.setAttribute("action", "/viewDetail");
+    form.setAttribute("action", getContextPath() + "/viewDetail");
 	
     var field = document.createElement("input");
     field.setAttribute("type", "text");
