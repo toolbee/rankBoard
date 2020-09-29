@@ -66,17 +66,21 @@ $(document).ready(function() {
 </script>
 
 <script>
-var records = $.getJSON("players.json");
+var playerRecords = $.getJSON("players.json");
+var records = $.getJSON("records.json");
 
 $(document).ready(function() {
 	
-	var players = records["responseJSON"]["players"];
+	var players = playerRecords["responseJSON"]["players"];
+	records = records["responseJSON"]["records"];
 	
 	//URL에서 파라미터 추출
 	var url = unescape(location.href); // ex) http://localhost:8080/viewDetail?seq=3
 	var numUrl = url.split('='); // numUrl[0] = http: ~ , numUrl[1] = 3 
 	var num = numUrl[1];
 	
+	
+	/* 플레이어 종합 기록 */
 	//selectOne(num);
 	var playerRecord = players[num];
 	
@@ -103,6 +107,19 @@ $(document).ready(function() {
 	chartDiv.appendChild(pieChartDiv2);
 
 	makeBoard(section, playerRecord, playerDiv, chartDiv);
+	
+	
+	/* 매치 기록 리스트 */
+	var recordList = new Object;
+	for(var i=0; i<records.length; i++) {
+		for(var j=0; j<records[i]["team1"].length; j++) {
+		
+			if(playerRecord["nickname"] == records[i]["team1"][j]["nickname"]) {
+				//recordList.
+			}
+		}
+		
+	}
 	
 })
 
