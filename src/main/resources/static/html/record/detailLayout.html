@@ -113,14 +113,25 @@ $(document).ready(function() {
 	var recordList = new Object;
 	for(var i=0; i<records.length; i++) {
 		for(var j=0; j<records[i]["team1"].length; j++) {
-		
 			if(playerRecord["nickname"] == records[i]["team1"][j]["nickname"]) {
 				recordList.push(records[i]);
 			}
 		}
+		for(var record in records[i]["team2"]) {
+			if(playerRecord["nickname"] == record["nickname"]) {
+				recordList.push(record);
+			}
+		}
 		
 	}
-	makeList(recordList);
+	var listDiv;
+	
+	//매치 리스트 영역 만들기
+	listDiv = document.createElement("div");
+	listDiv.setAttribute("class", "row");
+	
+	listDiv = makeList(recordList, listDiv);
+	section.append(listDiv);
 	
 })
 
@@ -354,30 +365,60 @@ function drawChart(player, chartValue, i) {
 }
 
 
-function makeList(recordList) {
+function makeList(recordList, listDiv) {
 	
-	var profileDiv = document.createElement('div');
-	var img = document.createElement('img');
-	var name = document.createElement('div');
-	var nickname = document.createElement('div');
-
-	profileDiv.setAttribute("class", "col-sm-3 col-md-3 text-center");
-	name.setAttribute("class", "name col-sm-6 col-md-6");
-	nickname.setAttribute("class", "nickname col-sm-6 col-md-6");
+	var cardDiv = document.createElement('div');
+	var h2 = document.createElement('h2');
+	var ul = document.createElement('ul');
+	cardDiv.setAttribute("class", "col-md-12 col-lg-10 col-lg-offset-1 menu-card page-indent");
+	h2.setAttribute("class", "decoration-stars");
+	h2.textContent = "경기 기록";
 	
-	img.setAttribute("src", "images/profile/"+player['photo']);
-	img.setAttribute("alt", player['nickname']);
-	img.setAttribute("class", "profileImg");
-	name.textContent = player['name'];
-	nickname.textContent = player['nickname'];
+	for(var record in recordList) {
+		var div = document.createElement("div");
+		var li = document.createElement('li');
+		var p1 = document.createElement('p');
+		var p2 = document.createElement('p');
+		var p3 = document.createElement('p');
+		var team1;
+		var team2;
+		
+		p1.setAttribute("class", "name");
+		p2.setAttribute("class", "price");
+		p3.setAttribute("class", "mute");
+		
+		for(var member in record["team1"]) {
+			team1 = team1 + member["nickname"] + " " + member["tribe"] + " ";
+		}
+		for(var member in record["team2"]) {
+			team2 = team2 + member["nickname"] + " " + member["tribe"] + " ";
+		}
+		if(record["winner"] == "team1") {
+			team1 = "승리 " + team1;
+			team2 = team2 + "패배";
+		} 
+		else {
+			team1 = "패배 " + team1;
+			team2 = team2 + "승리";
+		}
+		p1.textContent = team1 + "VS. " + team2;
+		p2.textContent = record["datetime"];
+		p3.textContent = record["map"];
+		
+		div.append(p1);
+		div.append(p2);
+		li.append(div);
+		li.append(p3);
+		ul.append(li);
+		
+	}
+	cardDiv.append(h2);
+	cardDiv.append(ul);
+	listDiv.appendChild(cardDiv);
 	
-	profileDiv.appendChild(img);
-	profileDiv.appendChild(name);
-	profileDiv.appendChild(nickname);
-	
-	playerDiv.appendChild(profileDiv);
-	
+	return listDiv;
 }
+
 </script>
 
 <body>

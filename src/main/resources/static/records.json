@@ -5,12 +5,12 @@
 		"team1": [
 			{
 				"nickname":"야성패기",
-				"tribe":"protoss"
+				"tribe":"P"
 			}
 		],
 		"team2": [{
 			"nickname":"Toolbee",
-			"tribe":"protoss"
+			"tribe":"P"
 		}],
 		"team1Name": "야성패기",
 		"team2Name": "Toolbee",
@@ -23,24 +23,25 @@
 		"type":1,
 		"team1": [{
 			"nickname":"야성패기",
-			"tribe":"protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"[BISU]_choijh",
-			"tribe":"protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"FC_KEKE",
-			"tribe":"zerg"
+			"tribe":"Z"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "야성패기 & [BISU]_choijh",
 		"team2Name": "FC_KEKE & Toolbee",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-20 09:00:00",
 		"winner":"team2",
 		"loser":"team1"
@@ -50,24 +51,25 @@
 		"type":1,
 		"team1": [{
 			"nickname":"야성패기",
-			"tribe":"protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"[BISU]_choijh",
-			"tribe":"protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"FC_KEKE",
-			"tribe":"zerg"
+			"tribe":"Z"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "야성패기 & [BISU]_choijh",
 		"team2Name": "FC_KEKE & Toolbee",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-20 09:00:00",
 		"winner":"team2",
 		"loser":"team1"
@@ -78,16 +80,17 @@
 		"team1": [{
 		
 			"nickname":"[BISU]_choijh",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"FC_KEKE",
-			"tribe":"Terran"
+			"tribe":"T"
 		}
 		],
 		"team1Name": "[BISU]_choijh",
 		"team2Name": "FC_KEKE",
+		"map": "Python 1.1",
 		"datetime":"2020-09-22 21:30:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -98,24 +101,25 @@
 		"team1": [{
 		
 			"nickname":"Yakhun",
-			"tribe":"random(Terran)"
+			"tribe":"random(T)"
 		},
 		{
 			"nickname":"General Hwang",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"야성패기",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "조&황",
 		"team2Name": "박&변",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-26 21:11:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -126,24 +130,25 @@
 		"team1": [{
 		
 			"nickname":"Yakhun",
-			"tribe":"random(Terran)"
+			"tribe":"random(T)"
 		},
 		{
 			"nickname":"General Hwang",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"야성패기",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "조&황",
 		"team2Name": "박&변",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-26 21:25:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -154,24 +159,25 @@
 		"team1": [{
 		
 			"nickname":"[BISU]_choijh",
-			"tribe":"random(Terran)"
+			"tribe":"random(T)"
 		},
 		{
 			"nickname":"General Hwang",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"야성패기",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-26 21:42:00",
 		"winner":"team2",
 		"loser":"team1"
@@ -182,24 +188,25 @@
 		"team1": [{
 		
 			"nickname":"[BISU]_choijh",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"General Hwang",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"야성패기",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-26 21:53:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -210,24 +217,25 @@
 		"team1": [{
 		
 			"nickname":"[BISU]_choijh",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"General Hwang",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team2": [{
 			"nickname":"야성패기",
-			"tribe":"Protoss"
+			"tribe":"P"
 		},
 		{
 			"nickname":"Toolbee",
-			"tribe":"Protoss"
+			"tribe":"P"
 		}
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
+		"map": "Hunter 1.3",
 		"datetime":"2020-09-26 22:08:00",
 		"winner":"team1",
 		"loser":"team2"
