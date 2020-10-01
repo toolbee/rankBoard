@@ -110,20 +110,20 @@ $(document).ready(function() {
 	
 	
 	/* 매치 기록 리스트 */
-	var recordList = new Object;
-	for(var i=0; i<records.length; i++) {
-		for(var j=0; j<records[i]["team1"].length; j++) {
-			if(playerRecord["nickname"] == records[i]["team1"][j]["nickname"]) {
-				recordList.push(records[i]);
-			}
-		}
-		for(var record in records[i]["team2"]) {
-			if(playerRecord["nickname"] == record["nickname"]) {
+	var recordList = new Array();
+	records.forEach(function(record) {
+		
+		record["team1"].forEach(function(item) {
+			if(playerRecord["nickname"] == item["nickname"]) {
 				recordList.push(record);
 			}
-		}
-		
-	}
+		})
+		record["team2"].forEach(function(item) {
+			if(playerRecord["nickname"] == item["nickname"]) {
+				recordList.push(record);
+			}
+		})
+	})
 	var listDiv;
 	
 	//매치 리스트 영역 만들기
@@ -374,26 +374,27 @@ function makeList(recordList, listDiv) {
 	h2.setAttribute("class", "decoration-stars");
 	h2.textContent = "경기 기록";
 	
-	for(var record in recordList) {
+	recordList.forEach(function(item) {
 		var div = document.createElement("div");
 		var li = document.createElement('li');
 		var p1 = document.createElement('p');
 		var p2 = document.createElement('p');
 		var p3 = document.createElement('p');
-		var team1;
-		var team2;
+		var team1 = "";
+		var team2 = "";
 		
 		p1.setAttribute("class", "name");
-		p2.setAttribute("class", "price");
+		p2.setAttribute("class", "mute");
 		p3.setAttribute("class", "mute");
 		
-		for(var member in record["team1"]) {
+		item["team1"].forEach(function(member) {
 			team1 = team1 + member["nickname"] + " " + member["tribe"] + " ";
-		}
-		for(var member in record["team2"]) {
+		})
+		item["team2"].forEach(function(member) {
 			team2 = team2 + member["nickname"] + " " + member["tribe"] + " ";
-		}
-		if(record["winner"] == "team1") {
+		})
+
+		if(item["winner"] == "team1") {
 			team1 = "승리 " + team1;
 			team2 = team2 + "패배";
 		} 
@@ -402,16 +403,17 @@ function makeList(recordList, listDiv) {
 			team2 = team2 + "승리";
 		}
 		p1.textContent = team1 + "VS. " + team2;
-		p2.textContent = record["datetime"];
-		p3.textContent = record["map"];
+		p2.textContent = item["datetime"];
+		p3.textContent = item["map"];
 		
 		div.append(p1);
 		div.append(p2);
 		li.append(div);
 		li.append(p3);
 		ul.append(li);
-		
-	}
+			
+	})
+			
 	cardDiv.append(h2);
 	cardDiv.append(ul);
 	listDiv.appendChild(cardDiv);
