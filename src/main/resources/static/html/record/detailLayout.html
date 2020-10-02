@@ -376,15 +376,16 @@ function makeList(recordList, listDiv) {
 	
 	recordList.forEach(function(item) {
 		var div = document.createElement("div");
-		var li = document.createElement('li');
-		var p1 = document.createElement('p');
-		var p2 = document.createElement('p');
-		var p3 = document.createElement('p');
+		var li = document.createElement("li");
+		var p1 = document.createElement("p");
+		var p2 = document.createElement("p");
+		var p3 = document.createElement("p");
+		var span = document.createElement("span");
 		var team1 = "";
 		var team2 = "";
 		
 		p1.setAttribute("class", "name");
-		p2.setAttribute("class", "mute");
+		p2.setAttribute("class", "price");
 		p3.setAttribute("class", "mute");
 		
 		item["team1"].forEach(function(member) {
@@ -402,10 +403,12 @@ function makeList(recordList, listDiv) {
 			team1 = "패배 " + team1;
 			team2 = team2 + "승리";
 		}
-		p1.textContent = team1 + "VS. " + team2;
+		span.textContent = team1 + "VS. " + team2;
+		//p1.textContent = team1 + "VS. " + team2;
 		p2.textContent = item["datetime"];
 		p3.textContent = item["map"];
 		
+		p1.append(span);
 		div.append(p1);
 		div.append(p2);
 		li.append(div);
