@@ -12,8 +12,8 @@
 				{
 					"myTeam":"박&변",
 					"opposeTeam":"최&황",
-					"win":1,
-					"lose":4
+					"win":2,
+					"lose":6
 				},
 				{
 					"myTeam":"박&최",
@@ -22,7 +22,7 @@
 					"lose":1
 				},
 				{
-					"myTeam":"조&박팀",
+					"myTeam":"조&박",
 					"opposeTeam":"최&변",
 					"win":1,
 					"lose":1
@@ -30,6 +30,12 @@
 				{
 					"myTeam":"이&변",
 					"opposeTeam":"박&최",
+					"win":0,
+					"lose":2
+				},
+				{
+					"myTeam":"박&변",
+					"opposeTeam":"조&황",
 					"win":0,
 					"lose":2
 				}
@@ -78,11 +84,11 @@
 				{
 					"myTeam":"박&변",
 					"opposeTeam":"최&황",
-					"win":1,
-					"lose":4
+					"win":2,
+					"lose":6
 				},
 				{
-					"myTeam":"조&변팀",
+					"myTeam":"조&변",
 					"opposeTeam":"박&최",
 					"win":1,
 					"lose":1
@@ -98,6 +104,18 @@
 					"opposeTeam":"박&최",
 					"win":2,
 					"lose":0
+				},
+				{
+					"myTeam":"이&변",
+					"opposeTeam":"조&최",
+					"win":7,
+					"lose":3
+				},
+				{
+					"myTeam":"박&변",
+					"opposeTeam":"조&황",
+					"win":0,
+					"lose":2
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -115,7 +133,7 @@
 				{
 					"rival":"Yakhun",
 					"win":1,
-					"lose":4
+					"lose":5
 				}, 
 				{
 					"rival":"FC_KEKE",
@@ -190,6 +208,17 @@
 					"opposeTeam":"박&최",
 					"win":2,
 					"lose":0
+				},
+				{
+					"myTeam":"이&변",
+					"opposeTeam":"조&최",
+					"win":7,
+					"lose":3
+				}, 
+				{
+					"rival":"Yakhun",
+					"win":2,
+					"lose":0
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -254,6 +283,18 @@
 					"opposeTeam":"이&변",
 					"win":0,
 					"lose":2
+				},
+				{
+					"myTeam":"조&최",
+					"opposeTeam":"이&변",
+					"win":3,
+					"lose":7
+				},
+				{
+					"myTeam":"최&황",
+					"opposeTeam":"박&변",
+					"win":6,
+					"lose":2
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -305,6 +346,12 @@
 					"opposeTeam":"이&변",
 					"win":0,
 					"lose":4
+				},
+				{
+					"myTeam":"최&황",
+					"opposeTeam":"박&변",
+					"win":6,
+					"lose":2
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -378,10 +425,22 @@
 					"lose":1
 				},
 				{
-					"myTeam":"조&박팀",
+					"myTeam":"조&박",
 					"opposeTeam":"최&변",
 					"win":1,
 					"lose":1
+				},
+				{
+					"myTeam":"조&최",
+					"opposeTeam":"이&변",
+					"win":3,
+					"lose":7
+				},
+				{
+					"myTeam":"조&황",
+					"opposeTeam":"박&변",
+					"win":2,
+					"lose":0
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -393,8 +452,13 @@
 				}, 
 				{
 					"rival":"Toolbee",
-					"win":4,
+					"win":5,
 					"lose":1
+				}, 
+				{
+					"rival":"FC_KEKE",
+					"win":0,
+					"lose":2
 				}
 			]
 		}
