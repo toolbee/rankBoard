@@ -421,7 +421,7 @@ function drawChart(player, chartValue) {
 //selectAll
 function selectAll() {
 	$.ajax({
-        url:'/selectAll',
+        url:getContextPath() + '/selectAll',
         type:'post',
         success: function(data) {
         	
