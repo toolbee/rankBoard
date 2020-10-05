@@ -41,7 +41,7 @@
 		],
 		"team1Name": "야성패기 & [BISU]_choijh",
 		"team2Name": "FC_KEKE & Toolbee",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-20 09:00:00",
 		"winner":"team2",
 		"loser":"team1"
@@ -69,7 +69,7 @@
 		],
 		"team1Name": "야성패기 & [BISU]_choijh",
 		"team2Name": "FC_KEKE & Toolbee",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-20 09:00:00",
 		"winner":"team2",
 		"loser":"team1"
@@ -101,7 +101,7 @@
 		"team1": [{
 		
 			"nickname":"Yakhun",
-			"tribe":"random(T)"
+			"tribe":"T"
 		},
 		{
 			"nickname":"General Hwang",
@@ -119,7 +119,7 @@
 		],
 		"team1Name": "조&황",
 		"team2Name": "박&변",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-26 21:11:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -130,7 +130,7 @@
 		"team1": [{
 		
 			"nickname":"Yakhun",
-			"tribe":"random(T)"
+			"tribe":"T"
 		},
 		{
 			"nickname":"General Hwang",
@@ -148,7 +148,7 @@
 		],
 		"team1Name": "조&황",
 		"team2Name": "박&변",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-26 21:25:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -159,7 +159,7 @@
 		"team1": [{
 		
 			"nickname":"[BISU]_choijh",
-			"tribe":"random(T)"
+			"tribe":"T"
 		},
 		{
 			"nickname":"General Hwang",
@@ -177,7 +177,7 @@
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-26 21:42:00",
 		"winner":"team2",
 		"loser":"team1"
@@ -206,7 +206,7 @@
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-26 21:53:00",
 		"winner":"team1",
 		"loser":"team2"
@@ -214,15 +214,15 @@
 	{
 		"seq":9,
 		"type":1,
-		"team1": [{
-		
-			"nickname":"[BISU]_choijh",
-			"tribe":"P"
-		},
-		{
-			"nickname":"General Hwang",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"General Hwang",
+				"tribe":"P"
+			}
 		],
 		"team2": [{
 			"nickname":"야성패기",
@@ -235,10 +235,389 @@
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
-		"map": "Hunter KeSPA 1.4",
+		"map": "The Hunters KeSPA 1.4",
 		"datetime":"2020-09-26 22:08:00",
 		"winner":"team1",
 		"loser":"team2"
+	},	 
+	{
+		"seq":10,
+		"type":0,
+		"team1": [
+			{
+				"nickname":"Yakhun",
+				"tribe":"P"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "Yakhun",
+		"team2Name": "Toolbee",
+		"map": "Python 1.3",
+		"datetime":"2020-10-03 20:39",
+		"lapTime": "09:48",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":11,
+		"type":0,
+		"team1": [
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			}
+		],
+		"team1Name": "Yakhun",
+		"team2Name": "FC_KEKE",
+		"map": "Python 1.3",
+		"datetime":"2020-10-03 21:14",
+		"lapTime": "14:21",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":12,
+		"type":0,
+		"team1": [
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			}
+		],
+		"team1Name": "Yakhun",
+		"team2Name": "Toolbee",
+		"map": "Python 1.3",
+		"datetime":"2020-10-03 21:25",
+		"lapTime": "10:10",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":13,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "The Hunters - Remastered",
+		"datetime":"2020-10-03 21:44",
+		"lapTime": "10:10",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":14,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "The Hunters - Remastered",
+		"datetime":"2020-10-03 22:06",
+		"lapTime": "20:37",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":15,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"Z"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"T"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "The Hunters - Remastered",
+		"datetime":"2020-10-03 22:16",
+		"lapTime": "09:02",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":16,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"P"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "The Hunters - Remastered",
+		"datetime":"2020-10-03 22:25",
+		"lapTime": "07:58",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":17,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"Z"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "Python 1.3",
+		"datetime":"2020-10-03 22:43",
+		"lapTime": "10:49",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":18,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"Z"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "Python 1.3",
+		"datetime":"2020-10-03 23:01",
+		"lapTime": "17:01",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":19,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"P"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "Python 1.3",
+		"datetime":"2020-10-03 23:46",
+		"lapTime": "25:39",
+		"winner":"team1",
+		"loser":"team2"
+	},	 
+	{
+		"seq":20,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "Python 1.3",
+		"datetime":"2020-10-04 00:11",
+		"lapTime": "17:56",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":21,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"P"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "Python 1.3",
+		"datetime":"2020-10-04 00:37",
+		"lapTime": "07:36",
+		"winner":"team2",
+		"loser":"team1"
+	},	 
+	{
+		"seq":22,
+		"type":1,
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			}
+		],
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
+		"team1Name": "조&최",
+		"team2Name": "이&변",
+		"map": "Python 1.3",
+		"datetime":"2020-10-04 01:00",
+		"lapTime": "20:35",
+		"winner":"team2",
+		"loser":"team1"
 	}
 	] 
 }

@@ -54,6 +54,9 @@
 			font-size: 13px;
 			height: 100%;
 		}
+		.winFlag {
+			text-weight: bolder;
+		}
 	</style>
 </head>
 
@@ -380,8 +383,15 @@ function makeList(recordList, listDiv) {
 		var p2 = document.createElement("p");
 		var p3 = document.createElement("p");
 		var span = document.createElement("span");
+		var span_win = document.createElement("span");
+		var span_lose = document.createElement("span");
 		var team1 = "";
 		var team2 = "";
+		
+		span_win.textContent = "승리";
+		span_lose.textContent = "패배";
+		span_win.setAttribute("class", "winFlag");
+		span_lose.setAttribute("class", "winFlag");
 		
 		p1.setAttribute("class", "name");
 		p2.setAttribute("class", "price");
@@ -395,20 +405,26 @@ function makeList(recordList, listDiv) {
 			team2 = team2 + member["nickname"] + " " + member["tribe"] + " ";
 		})
 
+		span.textContent = team1 + "VS. " + team2;
+		
 		if(item["winner"] == "team1") {
-			team1 = "승리 " + team1;
-			team2 = team2 + "패배";
+			//team1 = "승리 " + team1;
+			//team2 = team2 + "패배";
+			p1.append(span_win);
+			p1.append(span);
+			p1.append(span_lose);
 		} 
 		else {
-			team1 = "패배 " + team1;
-			team2 = team2 + "승리";
+			//team1 = "패배 " + team1;
+			//team2 = team2 + "승리";
+			p1.append(span_win);
+			p1.append(span);
+			p1.append(span_lose);
 		}
-		span.textContent = team1 + "VS. " + team2;
 		//p1.textContent = team1 + "VS. " + team2;
 		p2.textContent = item["datetime"].slice(0, 10);
 		p3.textContent = item["map"];
 		
-		p1.append(span);
 		div.append(p1);
 		div.append(p2);
 		li.append(div);
