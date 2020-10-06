@@ -69,10 +69,19 @@ $(document).ready(function() {
 
 <script>
 var playerRecords = $.getJSON("players.json");
+
 var matchRecords = $.getJSON("records.json");
 
+/* function getRecords() {
+	$.getJSON('records.json', function(data) {
+		return data["records"];
+	});
+}
+ */
+
 $(document).ready(function() {
-	
+	//var records = new Array();
+	//records = getRecords();
 	var players = playerRecords["responseJSON"]["players"];
 	var records = matchRecords["responseJSON"]["records"];
 	
@@ -388,8 +397,8 @@ function makeList(recordList, listDiv) {
 		var team1 = "";
 		var team2 = "";
 		
-		span_win.textContent = "승리";
-		span_lose.textContent = "패배";
+		span_win.textContent = "승";
+		span_lose.textContent = "패";
 		span_win.setAttribute("class", "winFlag");
 		span_lose.setAttribute("class", "winFlag");
 		
@@ -417,9 +426,9 @@ function makeList(recordList, listDiv) {
 		else {
 			//team1 = "패배 " + team1;
 			//team2 = team2 + "승리";
-			p1.append(span_win);
-			p1.append(span);
 			p1.append(span_lose);
+			p1.append(span);
+			p1.append(span_win);
 		}
 		//p1.textContent = team1 + "VS. " + team2;
 		p2.textContent = item["datetime"].slice(0, 10);

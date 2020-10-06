@@ -214,11 +214,6 @@
 					"opposeTeam":"조&최",
 					"win":7,
 					"lose":3
-				}, 
-				{
-					"rival":"Yakhun",
-					"win":2,
-					"lose":0
 				}
 			],
 			"rivalry_ko":"개인전",
@@ -227,6 +222,11 @@
 					"rival":"[BISU]_choijh",
 					"win":6,
 					"lose":1
+				}, 
+				{
+					"rival":"Yakhun",
+					"win":2,
+					"lose":0
 				},
 				{
 					"rival":"General Hwang",
