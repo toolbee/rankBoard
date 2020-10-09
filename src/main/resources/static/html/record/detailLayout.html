@@ -55,7 +55,7 @@
 			height: 100%;
 		}
 		.winFlag {
-			text-weight: bolder;
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -388,8 +388,8 @@ function makeList(recordList, listDiv) {
 		var team1 = "";
 		var team2 = "";
 		
-		span_win.textContent = "승리";
-		span_lose.textContent = "패배";
+		span_win.textContent = "승";
+		span_lose.textContent = "패";
 		span_win.setAttribute("class", "winFlag");
 		span_lose.setAttribute("class", "winFlag");
 		
@@ -405,7 +405,7 @@ function makeList(recordList, listDiv) {
 			team2 = team2 + member["nickname"] + " " + member["tribe"] + " ";
 		})
 
-		span.textContent = team1 + "VS. " + team2;
+		span.textContent = team1 + " VS. " + team2;
 		
 		if(item["winner"] == "team1") {
 			//team1 = "승리 " + team1;
@@ -413,13 +413,13 @@ function makeList(recordList, listDiv) {
 			p1.append(span_win);
 			p1.append(span);
 			p1.append(span_lose);
-		} 
-		else {
+		
+		} else {
 			//team1 = "패배 " + team1;
 			//team2 = team2 + "승리";
-			p1.append(span_win);
-			p1.append(span);
 			p1.append(span_lose);
+			p1.append(span);
+			p1.append(span_win);
 		}
 		//p1.textContent = team1 + "VS. " + team2;
 		p2.textContent = item["datetime"].slice(0, 10);
