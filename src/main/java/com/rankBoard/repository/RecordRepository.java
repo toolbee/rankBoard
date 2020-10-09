@@ -14,17 +14,18 @@ import com.rankBoard.domain.PlayerRecord;
 
 @Repository
 @Mapper
-public interface BoardRepository {
+public interface RecordRepository extends ElasticsearchRepository<PlayerRecord, String> {
 
-	List<MatchRecord> selectAll() throws Exception;
+	//Page<PlayerRecord> findByMap(String map, PageRequest pageRequest);
+	//List<MatchRecord> findByPlayer(String player);
 
-	void insert(MatchRecord matchRecord) throws Exception;
-
-	MatchRecord selectOne(int num) throws Exception;
-
-	void delete(int num) throws Exception;
-
-	void update(MatchRecord matchRecord) throws Exception;
+	Page<PlayerRecord> findByPlayers(String name, Pageable pageable);
 	
+	PlayerRecord findBySeq(String seq);
+
+
+    @Query("{\"bool\": {\"must\": [{\"match\": {\"players.name\": \"?0\"}}]}}")
+    Page<PlayerRecord> findByPlayersNameUsingCustomQuery(String name, Pageable pageable);
+
 	
 }

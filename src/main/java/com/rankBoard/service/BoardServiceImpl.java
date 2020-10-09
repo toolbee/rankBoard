@@ -17,73 +17,33 @@ import com.rankBoard.repository.BoardRepository;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	private BoardRepository boardRepository; 
+	private BoardRepository repository; 
 	
 	@Override
 	public List<MatchRecord> selectAll() throws Exception {
-		return boardRepository.selectAll();
+		return repository.selectAll();
 	}
 
 	@Override
 	public void insert(MatchRecord matchRecord) throws Exception {
-		boardRepository.insert(matchRecord);
+		repository.insert(matchRecord);
 	}
 
 	@Override
 	public MatchRecord selectOne(int num) throws Exception {
-		return boardRepository.selectOne(num);
+		return repository.selectOne(num);
 	}
 
 	@Override
 	public void delete(int num) throws Exception {
-		boardRepository.delete(num);
+		repository.delete(num);
 	}
 
 	@Override
 	public void update(MatchRecord matchRecord) throws Exception {
-		boardRepository.update(matchRecord);
+		repository.update(matchRecord);
 	}
 	
-	
-	
-	
-	@Override
-	public boolean findById(String id) {
-		return boardRepository.existsById(id);
-	}
-
-	@Override
-	public PlayerRecord save(PlayerRecord playerRecord) {
-		return boardRepository.save(playerRecord);
-	}
-
-	@Override
-	public void delete(PlayerRecord playerRecord) {
-		boardRepository.delete(playerRecord);
-		
-	}
-
-	@Override
-	public Iterable<PlayerRecord> findAll() {
-		return boardRepository.findAll();
-	}
-
-	@Override
-	public Page<PlayerRecord> findByPlayers(String name, Pageable pageable) {
-		return boardRepository.findByPlayers(name, pageable);
-	}
-
-	@Override
-	public PlayerRecord findBySeq(String seq) {
-		return boardRepository.findBySeq(seq);
-	}
-
-	@Override
-	public void getRecordAll() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 
 }

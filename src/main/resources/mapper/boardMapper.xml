@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rankBoard.repository.BoardRepository">
+
+	<sql id="selectSql">
+		SELECT 
+			M.SEQ
+			, M.TYPE
+			, M.HOME_TEAM_ID
+			, M.AWAY_TEAM_ID
+			, M.MAP
+			, M.MATCH_DATE
+			, M.LAP_TIME
+			, M.WINNER
+			, M.LOSER
+			, M.REPLAY_FILE_ID
+			, M.REGIST_DATE
+			, M.MODIFY_DATE
+			, T.PLAYER_1
+			, T.PLAYER_2
+			, T.PLAYER_3
+			, T.PLAYER_4
+			, T2.PLAYER_1
+			, T2.PLAYER_2
+			, T2.PLAYER_3
+			, T2.PLAYER_4
+		FROM tb_match M
+		LEFT JOIN tb_team T
+		ON M.HOME_TEAM_ID = T.SEQ
+		LEFT JOIN tb_team T2
+		ON M.AWAY_TEAM_ID = T2.SEQ
+		WHERE 1=1
+	</sql>
+	
+	<select id="selectAll" parameterType="Map" resultType="MatchRecord">
+		<include refid="selectSql"></include>
+	</select>
+
+	<insert id="insert" parameterType="Map" useGeneratedKeys="true" keyProperty="seq">
+		INSERT INTO tb_match (
+			TYPE
+			, HOME_TEAM_ID
+			, AWAY_TEAM_ID
+			, MAP
+			, MATCH_DATE
+			, LAP_TIME
+			, WINNER
+			, LOSER
+			, REPLAY_FILE_ID
+			, REGIST_DATE
+		) VALUES (
+			#{type}
+			, #{homeTeamId}
+			, #{awayTeamId}
+			, #{map}
+			, #{matchDate}
+			, #{lapTime}
+			, #{winner}
+			, #{loser}
+			, #{replayFileId}
+			, NOW()
+		)
+		
+	</insert>
+	
+	
+	<select id="selectOne" resultType="MatchRecord">
+		<include refid="selectSql"></include>
+		AND M.SEQ = #{seq}
+	</select>
+	
+	
+	
+	<delete id="delete" parameterType="Map" >
+		 DELETE FROM tb_match
+		 WHERE SEQ = #{seq}
+	</delete>
+
+
+
+	<update id="update" parameterType="Map" >
+		UPDATE tb_match SET
+			TYPE = #{type}
+			, HOME_TEAM_ID = #{homeTeamId}
+			, AWAY_TEAM_ID = #{awayTeamId}
+			, MAP = #{map}
+			, MATCH_DATE = #{matchDate}
+			, LAP_TIME = #{lapTime}
+			, WINNER = #{winner}
+			, LOSER = #{loser}
+			, REPLAY_FILE_ID = #{replayFileId}
+			, MODIFY_DATE = NOW()
+		WHERE SEQ = #{seq} 
+		
+	</update>
+	
+</mapper>

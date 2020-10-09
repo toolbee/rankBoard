@@ -1,11 +1,11 @@
 package com.rankBoard.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.annotation.Resource;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,20 +19,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.rankBoard.domain.MatchRecord;
 import com.rankBoard.domain.PlayerRecord;
 import com.rankBoard.service.BoardService;
+import com.rankBoard.service.RecordService;
 
 @Controller	
 public class BoardControllerRest {
 
 	Logger logger = Logger.getLogger(BoardControllerRest.class.getName());
 
+	@Resource
 	private BoardService service;
+	
+	@Resource
+	private RecordService recordService;
 	
 	
 	@RequestMapping(value = "/getPlayerList", method = RequestMethod.GET)
     @ResponseBody
     public Iterable<PlayerRecord> getPlayerList(Model model) {
 		
-		Iterable<PlayerRecord> playerRecordList = service.findAll();
+		Iterable<PlayerRecord> playerRecordList = recordService.findAll();
 		
         return playerRecordList;
     }
@@ -54,7 +59,7 @@ public class BoardControllerRest {
     public PlayerRecord selectOne(@RequestParam("seq") String seq, Model model) {
 		PlayerRecord playerRecord = null;
 		//String seq2 = Integer.toString(seq);
-		playerRecord = service.findBySeq(seq);
+		playerRecord = recordService.findBySeq(seq);
 		
 		//model.addAttribute("playerRecord", playerRecord);
 		//model.addAttribute("seq", seq);
@@ -68,7 +73,7 @@ public class BoardControllerRest {
     public Iterable<PlayerRecord> getPlayerOne(Model model) {
 		
 		String nameToFind = "변지훈";
-		Page<PlayerRecord> recordByName = service.findByPlayers(nameToFind, PageRequest.of(0, 10));
+		Page<PlayerRecord> recordByName = recordService.findByPlayers(nameToFind, PageRequest.of(0, 10));
 		
 		logger.info(recordByName.toString());
 		
@@ -97,7 +102,7 @@ public class BoardControllerRest {
 		
 		keys.forEach(key -> System.out.println(key));
 		
-		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) service.save(record);
+		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) recordService.save(record);
 		
 		logger.info(recordByName.toString());
 		
@@ -126,7 +131,7 @@ public class BoardControllerRest {
 		record.setTribe((String) map.get("tribe"));
 		
 		// id 존재하면 update 
-		if(service.findById(id)) {
+		if(recordService.findById(id)) {
 			
 		} else {
 			// 존재하지 않으면 insert
@@ -134,7 +139,7 @@ public class BoardControllerRest {
 		
 		keys.forEach(key -> System.out.println(key));
 		
-		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) service.save(record);
+		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) recordService.save(record);
 		
 		logger.info(recordByName.toString());
 		
