@@ -8,206 +8,217 @@
 				"tribe":"P"
 			}
 		],
-		"team2": [{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}],
+		"team2": [
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
+		],
 		"team1Name": "야성패기",
 		"team2Name": "Toolbee",
-		"datetime":"2020-09-20 09:00:00",
+		"datetime":"2020-09-20 09:00",
 		"winner":"team1",
 		"loser":"team2"
 	},	 
 	{
 		"seq":2,
 		"type":1,
-		"team1": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"[BISU]_choijh",
-			"tribe":"P"
-		}
+		"team1": [
+			{	
+				"nickname":"야성패기",
+				"tribe":"P"
+			},
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"FC_KEKE",
-			"tribe":"Z"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "야성패기 & [BISU]_choijh",
 		"team2Name": "FC_KEKE & Toolbee",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-20 09:00:00",
+		"datetime":"2020-09-20 09:00",
 		"winner":"team2",
 		"loser":"team1"
 	},	 
 	{
 		"seq":3,
 		"type":1,
-		"team1": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"[BISU]_choijh",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"야성패기",
+				"tribe":"P"
+			},
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"FC_KEKE",
-			"tribe":"Z"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"Z"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "야성패기 & [BISU]_choijh",
 		"team2Name": "FC_KEKE & Toolbee",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-20 09:00:00",
+		"datetime":"2020-09-20 09:00",
 		"winner":"team2",
 		"loser":"team1"
 	},	 
 	{
 		"seq":4,
 		"type":0,
-		"team1": [{
-		
-			"nickname":"[BISU]_choijh",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"FC_KEKE",
-			"tribe":"T"
-		}
+		"team2": [
+			{
+				"nickname":"FC_KEKE",
+				"tribe":"T"
+			}
 		],
 		"team1Name": "[BISU]_choijh",
 		"team2Name": "FC_KEKE",
-		"map": "Python 1.1",
-		"datetime":"2020-09-22 21:30:00",
+		"map": "Python 1.3",
+		"datetime":"2020-09-22 21:30",
 		"winner":"team1",
 		"loser":"team2"
 	},	 
 	{
 		"seq":5,
 		"type":1,
-		"team1": [{
-		
-			"nickname":"Yakhun",
-			"tribe":"T"
-		},
-		{
-			"nickname":"General Hwang",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			},
+			{
+				"nickname":"General Hwang",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"야성패기",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "조&황",
 		"team2Name": "박&변",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-26 21:11:00",
+		"datetime":"2020-09-26 21:11",
 		"winner":"team1",
 		"loser":"team2"
 	},	 
 	{
 		"seq":6,
 		"type":1,
-		"team1": [{
-		
-			"nickname":"Yakhun",
-			"tribe":"T"
-		},
-		{
-			"nickname":"General Hwang",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"Yakhun",
+				"tribe":"T"
+			},
+			{
+				"nickname":"General Hwang",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"야성패기",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "조&황",
 		"team2Name": "박&변",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-26 21:25:00",
+		"datetime":"2020-09-26 21:25",
 		"winner":"team1",
 		"loser":"team2"
 	},	 
 	{
 		"seq":7,
 		"type":1,
-		"team1": [{
-		
-			"nickname":"[BISU]_choijh",
-			"tribe":"T"
-		},
-		{
-			"nickname":"General Hwang",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"T"
+			},
+			{
+				"nickname":"General Hwang",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"야성패기",
+				"tribe":"P"
+			},	
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-26 21:42:00",
+		"datetime":"2020-09-26 21:42",
 		"winner":"team2",
 		"loser":"team1"
 	},	 
 	{
 		"seq":8,
 		"type":1,
-		"team1": [{
-		
-			"nickname":"[BISU]_choijh",
-			"tribe":"P"
-		},
-		{
-			"nickname":"General Hwang",
-			"tribe":"P"
-		}
+		"team1": [
+			{
+				"nickname":"[BISU]_choijh",
+				"tribe":"P"
+			},
+			{
+				"nickname":"General Hwang",
+				"tribe":"P"
+			}
 		],
-		"team2": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"야성패기",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-26 21:53:00",
+		"datetime":"2020-09-26 21:53",
 		"winner":"team1",
 		"loser":"team2"
 	},	 
@@ -224,19 +235,20 @@
 				"tribe":"P"
 			}
 		],
-		"team2": [{
-			"nickname":"야성패기",
-			"tribe":"P"
-		},
-		{
-			"nickname":"Toolbee",
-			"tribe":"P"
-		}
+		"team2": [
+			{
+				"nickname":"야성패기",
+				"tribe":"P"
+			},
+			{
+				"nickname":"Toolbee",
+				"tribe":"P"
+			}
 		],
 		"team1Name": "최&황",
 		"team2Name": "박&변",
 		"map": "The Hunters KeSPA 1.4",
-		"datetime":"2020-09-26 22:08:00",
+		"datetime":"2020-09-26 22:08",
 		"winner":"team1",
 		"loser":"team2"
 	},	 

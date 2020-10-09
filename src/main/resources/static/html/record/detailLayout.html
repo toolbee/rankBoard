@@ -69,12 +69,21 @@ $(document).ready(function() {
 
 <script>
 var playerRecords = $.getJSON("players.json");
-var records = $.getJSON("records.json");
+
+var matchRecords = $.getJSON("records.json");
+
+/* function getRecords() {
+	$.getJSON('records.json', function(data) {
+		return data["records"];
+	});
+}
+ */
 
 $(document).ready(function() {
-	
+	//var records = new Array();
+	//records = getRecords();
 	var players = playerRecords["responseJSON"]["players"];
-	records = records["responseJSON"]["records"];
+	var records = matchRecords["responseJSON"]["records"];
 	
 	//URL에서 파라미터 추출
 	var url = unescape(location.href); // ex) http://localhost:8080/viewDetail?seq=3

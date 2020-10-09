@@ -1,6 +1,7 @@
 package com.rankBoard.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.rankBoard.domain.MatchRecord;
 import com.rankBoard.domain.PlayerRecord;
 import com.rankBoard.service.BoardService;
 
@@ -33,6 +35,16 @@ public class BoardControllerRest {
 		Iterable<PlayerRecord> playerRecordList = service.findAll();
 		
         return playerRecordList;
+    }
+	
+	
+	@RequestMapping(value = "/selectAll", method = RequestMethod.POST)
+    @ResponseBody
+    public List<MatchRecord> selectAll(Model model) throws Exception {
+		
+		List<MatchRecord> list = service.selectAll();
+		
+        return list;
     }
 	
 	
