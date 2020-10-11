@@ -41,5 +41,11 @@ public class BoardController {
         return "html/record/matchListLayout.html";
     }
 	
+	@RequestMapping(value = "/writeMatch", method = RequestMethod.GET)
+    public String writeMatch(Model model) {
+		
+        return "html/record/write.html";
+    }
+	
 	
 }
