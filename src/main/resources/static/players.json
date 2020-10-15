@@ -128,7 +128,7 @@
 				{
 					"rival":"[BISU]_choijh",
 					"win":0,
-					"lose":4
+					"lose":5
 				}, 
 				{
 					"rival":"Yakhun",
@@ -138,7 +138,7 @@
 				{
 					"rival":"FC_KEKE",
 					"win":0,
-					"lose":1
+					"lose":2
 				}, 
 				{
 					"rival":"야성패기",
@@ -220,7 +220,7 @@
 			"rivalry":[
 				{
 					"rival":"[BISU]_choijh",
-					"win":6,
+					"win":7,
 					"lose":1
 				}, 
 				{
@@ -235,7 +235,7 @@
 				},
 				{
 					"rival":"Toolbee",
-					"win":1,
+					"win":2,
 					"lose":0
 				},
 				{
@@ -302,7 +302,7 @@
 				{
 					"rival":"FC_KEKE",
 					"win":1,
-					"lose":6
+					"lose":7
 				},
 				{
 					"rival":"야성패기",
@@ -316,7 +316,7 @@
 				},
 				{
 					"rival":"Toolbee",
-					"win":4,
+					"win":5,
 					"lose":0
 				},
 				{
