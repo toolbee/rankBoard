@@ -21,18 +21,18 @@ public class MatchRecord {
 	private String map; //맵
 	private String lapTime; //매치 시간
 	private String[] players; //플레이어들
-	private String homeTeamId; //승자 아이디
-	private String awayTeamId; //승자 아이디
+	private String homeTeamId; //홈팀 아이디
+	private String awayTeamId; //어웨이팀 아이디
 	private String winner; //승자 아이디
 	private String winnerName; //승자 이름
 	private String winnerTribe; //승자 종족
 	private String loser; //패자 아이디
 	private String loserName; //패자 이름
 	private String loserTribe; //패자 종족
-	private String matchDate ;
-	private String replayFileId;
-	private String registDate;
-	private String modifyDate;
+	private String matchDate ; //매치일자
+	private String replayFileId; //리플레이파일
+	private String registDate; //등록일
+	private String modifyDate; //수정일
 	
 	public int getSeq() {
 		return seq;
@@ -99,6 +99,42 @@ public class MatchRecord {
 	}
 	public void setLoserTribe(String loserTribe) {
 		this.loserTribe = loserTribe;
+	}
+	public String getMatchDate() {
+		return matchDate;
+	}
+	public void setMatchDate(String matchDate) {
+		this.matchDate = matchDate;
+	}
+	public String getReplayFileId() {
+		return replayFileId;
+	}
+	public void setReplayFileId(String replayFileId) {
+		this.replayFileId = replayFileId;
+	}
+	public String getRegistDate() {
+		return registDate;
+	}
+	public void setRegistDate(String registDate) {
+		this.registDate = registDate;
+	}
+	public String getModifyDate() {
+		return modifyDate;
+	}
+	public void setModifyDate(String modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+	public String getHomeTeamId() {
+		return homeTeamId;
+	}
+	public void setHomeTeamId(String homeTeamId) {
+		this.homeTeamId = homeTeamId;
+	}
+	public String getAwayTeamId() {
+		return awayTeamId;
+	}
+	public void setAwayTeamId(String awayTeamId) {
+		this.awayTeamId = awayTeamId;
 	}
 	
 	

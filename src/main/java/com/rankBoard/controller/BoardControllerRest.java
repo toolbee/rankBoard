@@ -81,32 +81,22 @@ public class BoardControllerRest {
     }
 	
 	
-	@RequestMapping(value = "/insertRecord", method = RequestMethod.POST)
+	@RequestMapping(value = "/writeRecord", method = RequestMethod.POST)
     @ResponseBody
-    public Iterable<PlayerRecord> insertRecord(Model model) {
+    public void writeRecord(@RequestParam Model model) throws Exception {
 		
-		PlayerRecord record = new PlayerRecord();
+		MatchRecord record = new MatchRecord();
 		Map<?,?> map = model.asMap();
 		
 		@SuppressWarnings("unchecked")
 		Set<String> keys = (Set<String>) map.keySet();
 		
-		record.setName((String) map.get("name"));
-		record.setNickname((String) map.get("nickname"));
-		record.setPhoto((String) map.get("photo"));
-		record.setRivalry((Map<?,?>) map.get("rivalry"));
-		record.setSeq(Integer.parseInt((String) map.get("seq")));
-		record.setTeam((String[]) map.get("team"));
-		record.setTeamMatch((Map[]) map.get("teamMatch"));
-		record.setTribe((String) map.get("tribe"));
+		
 		
 		keys.forEach(key -> System.out.println(key));
 		
-		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) recordService.save(record);
+		service.insert(record);
 		
-		logger.info(recordByName.toString());
-		
-        return recordByName;
     }
 	
 	
@@ -147,4 +137,31 @@ public class BoardControllerRest {
     }
 	
 	
+	@RequestMapping(value = "/insertRecord", method = RequestMethod.POST)
+    @ResponseBody
+    public Iterable<PlayerRecord> insertRecord(Model model) {
+		
+		PlayerRecord record = new PlayerRecord();
+		Map<?,?> map = model.asMap();
+		
+		@SuppressWarnings("unchecked")
+		Set<String> keys = (Set<String>) map.keySet();
+		
+		record.setName((String) map.get("name"));
+		record.setNickname((String) map.get("nickname"));
+		record.setPhoto((String) map.get("photo"));
+		record.setRivalry((Map<?,?>) map.get("rivalry"));
+		record.setSeq(Integer.parseInt((String) map.get("seq")));
+		record.setTeam((String[]) map.get("team"));
+		record.setTeamMatch((Map[]) map.get("teamMatch"));
+		record.setTribe((String) map.get("tribe"));
+		
+		keys.forEach(key -> System.out.println(key));
+		
+		Page<PlayerRecord> recordByName = (Page<PlayerRecord>) recordService.save(record);
+		
+		logger.info(recordByName.toString());
+		
+        return recordByName;
+    }
 }

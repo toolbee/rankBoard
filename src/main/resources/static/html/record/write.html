@@ -58,8 +58,40 @@ $(document).ready(function() {
 	
 	var section = document.querySelector('section');
 	
+	
+	$("input[name=type]").change(function() {
+		var radioValue = $(this).val();
+		
+		if (radioValue == "0") { //개인전
+			$('.playerInput').children().slice(3, 9).css("display", "none");
+			$('.playerInput').children().slice(12, 18).css("display", "none");
+		
+		} else if (radioValue == "1") { //팀전
+			$('.playerInput').children().slice(3, 9).css("display", "");
+			$('.playerInput').children().slice(12, 18).css("display", "");
+		} 
+	});
 })
 
+
+function writeSubmit() {
+	var contextPath = getContextPath();
+	var obj = new Object();
+	var form = document.querySelector("form");
+    obj.record = form;
+	
+    $.ajax({
+        url: contextPath + '/writeRecord',
+        type: 'post',
+        data: obj,
+        success: function(data) {
+       		location.href = contextPath + 'list' 
+        },
+        error: function() {
+        	displayFail();
+        }
+    });
+}
 
 //contextPath 구하기
 function getContextPath() {
@@ -69,93 +101,16 @@ function getContextPath() {
 };
 
 
-
-
-//게시판 만들기
-function makeBoard(i, section, player, playerDiv, chartDiv) {
-		
-	//프로필 만들기
-	drawProfile(i, player, playerDiv);
+function displayFail() {
 	
-	//기본 정보 넣기
-	drawInfo(player, playerDiv);
-		
-	//기록 넣기
-	drawRecord(player, playerDiv);
-
-	//섹션에 어펜드
-	section.appendChild(playerDiv);
-	
-	//전체 영역div에 차트div 어펜드
-	playerDiv.appendChild(chartDiv);
-	
-	//차트 계산
-	//var chartValue = calcChart(player);
-	
-	//차트 그리기
-	//drawChart(player, chartValue);
-	drawChart(player, player["statistics"]);
+	var div1 = document.createElement("div");
+	var div2 = document.createElement("div");
+	var p = document.createElement("p");
+	div1.setAttribute("class", "form-group");
+	div2.setAttribute("class", "col-sm-12 col-md-12");
+	p.textContent = "오류가 발생하였습니다. 다시 시도해주세요.(ㅠㅠ)"
 }
 
-
-function drawProfile(i, player, playerDiv) {
-	var profileDiv = document.createElement('div');
-	var img = document.createElement('img');
-	var name = document.createElement('div');
-	var nickname = document.createElement('div');
-	
-	profileDiv.setAttribute("class", "col-sm-2 col-md-2 text-center");
-	profileDiv.setAttribute("style", "cursor:pointer;");
-	profileDiv.setAttribute("onclick", "viewDetail("+player['seq']+");");
-	name.setAttribute("class", "name");
-	nickname.setAttribute("class", "nickname");
-	
-	img.setAttribute("src", "images/profile/"+player['photo']);
-	img.setAttribute("alt", player['nickname']);
-	img.setAttribute("class", "profileImg");
-	name.textContent = player['name'];
-	nickname.textContent = player['nickname'];
-	
-	profileDiv.appendChild(img);
-	profileDiv.appendChild(name);
-	profileDiv.appendChild(nickname);
-	
-	if(i < 3) {
-		var medal = document.createElement('img');
-		var laurelWreath = document.createElement('img');
-		
-		img.style.position = "relative";
-		medal.setAttribute("class", "medalImg");
-		laurelWreath.setAttribute("class", "laurelWreathImg");
-
-		if(i == 0) {
-			laurelWreath.setAttribute("src", "images/icons/laurel-wreath3.png");
-			medal.setAttribute("src", "images/icons/augustus-gold-coin.jpg");
-			medal.setAttribute("alt", "금메달");
-			img.style.border = "5px solid #C99C3D";
-			laurelWreath.style.width = "190px";
-			laurelWreath.style.height = "175px";
-		} else if(i == 1) {
-			laurelWreath.setAttribute("src", "images/icons/laurel-wreath2.png");
-			medal.setAttribute("src", "images/icons/augustus-silver-coin.jpg");
-			medal.setAttribute("alt", "은메달");
-			img.style.border = "5px solid #999999";
-			laurelWreath.style.width = "150px";
-			laurelWreath.style.height = "auto";
-		} else if(i == 2) {
-			laurelWreath.setAttribute("src", "images/icons/laurel-wreath.png");
-			medal.setAttribute("src", "images/icons/augustus-bronze-coin.jpg");
-			medal.setAttribute("alt", "동메달");
-			img.style.border = "5px solid #A67051";
-			laurelWreath.style.width = "150px";
-			laurelWreath.style.height = "auto";
-		}
-		profileDiv.appendChild(medal);
-		profileDiv.appendChild(laurelWreath);
-		
-	}
-	playerDiv.appendChild(profileDiv);
-}
 
 
 function drawInfo(player, playerDiv) {
@@ -186,110 +141,6 @@ function drawInfo(player, playerDiv) {
 }
 
 
-function drawRecord(player, playerDiv) {
-	var recordDiv = document.createElement('div');
-	var ul = document.createElement('ul');
-	recordDiv.setAttribute("class", "col-sm-5 col-md-5");
-	
-	for(var i=0; i<2; i++) {
-		var li = document.createElement('li');
-		var title = document.createElement('div');
-		var itemDiv = document.createElement('div');
-		var ul_sub = document.createElement('ul');
-		
-		title.setAttribute("class", "title");
-		itemDiv.setAttribute("class", "title");
-		
-		if(i == 0) {
-			title.textContent = player['teamMatch_ko'];
-			
-			var teamMatch = player['teamMatch'];
-			for(var j=0; j<teamMatch.length; j++) {
-				var listItem = document.createElement('li');
-		   		listItem.textContent = teamMatch[j].myTeam + '(me) VS. ' + teamMatch[j].opposeTeam + ' : ' + teamMatch[j].win + '승 ' + teamMatch[j].lose + '패';
-		   		ul_sub.appendChild(listItem);
-			}
-			itemDiv.appendChild(ul_sub);
-		}
-		
-		if(i == 1) {
-			title.textContent = player['rivalry_ko'];
-			
-			var rivalry = player['rivalry'];
-		    for(var j=0; j<rivalry.length; j++) {
-		   		var listItem = document.createElement('li');
-		   		listItem.textContent = 'VS. ' + rivalry[j].rival + ' : ' + rivalry[j].win + '승 ' + rivalry[j].lose + '패';
-		   		ul_sub.appendChild(listItem);
-		    }
-		    itemDiv.appendChild(ul_sub);
-		}
-		li.appendChild(title);
-		li.appendChild(itemDiv);
-		ul.appendChild(li);
-	}
-	recordDiv.appendChild(ul);
-	playerDiv.appendChild(recordDiv);
-}
-
-
-function calcChart(player) {
-	var rivalry = player['rivalry'];
-	var arr = new Array();
-	var obj1 = new Object();
-	var obj2 = new Object();
-	var win = 0;
-	var lose = 0;
-	
-	for(var i=0; i<rivalry.length; i++) {
-		win = win + rivalry[i].win;
-		lose = lose + rivalry[i].lose;
-	}
-	obj1.record = "win";
-	obj1.value = win;
-	obj2.record = "lose";
-	obj2.value = lose;
-	arr.push(obj1);
-	arr.push(obj2);
-	return arr;
-}
-
-
-
-
-//selectAll
-function selectAll() {
-	$.ajax({
-        url:getContextPath() + '/selectAll',
-        type:'post',
-        success: function(data) {
-        	
-        	if(data == "S") {
-				
-        	}
-        }
-    });
-}
-
-//
-function viewDetail(seq) {
-	
-	var obj = new Object;
-	obj.seq = seq;
-	
-	var form = document.createElement("form");
-	form.setAttribute("charset", "UTF-8");
-    form.setAttribute("method", "get"); 
-    form.setAttribute("action", getContextPath() + "/viewDetail");
-	
-    var field = document.createElement("input");
-    field.setAttribute("type", "text");
-    field.setAttribute("name", "seq");
-    field.setAttribute("value", seq);
-    form.appendChild(field);
-    
-    document.body.appendChild(form);
-    form.submit();
-}
 
 
 </script>
@@ -300,18 +151,18 @@ function viewDetail(seq) {
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-12">
 				<article class="content">
-					<h1>Match Forms</h1>
+					<h1>Record Forms</h1>
 					<section>
 						<h2>매치 입력하기</h2>
 						
-						<form name="contact_form" id="contact_form" method="post" class="form-horizontal">
+						<form name="record_form" id="record_form" method="post" class="form-horizontal">
 							<div class="form-group">
 								<label class="col-sm-2 control-label">매치유형</label>
 								<label class="col-sm-2 radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="type_rival" value="0"> 개인전
+									<input type="radio" name="type" id="type_rival" value="0" > 개인전
 								</label>
 								<label class="col-sm-2 radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="type_team" value="1"> 팀전
+									<input type="radio" name="type" id="type_team" value="1"> 팀전
 								</label>
 								<!-- <div class="col-sm-6"></div> -->
 							</div>
@@ -395,7 +246,7 @@ function viewDetail(seq) {
 							
 							<div class="form-group">
 								<div class="col-sm-12 col-md-12 ">
-									<a id="submit_btn" class="btn btn-primary pull-right">저장</a>
+									<div id="submit_btn" onclick="writeSubmit();" class="btn btn-primary pull-right">저장</div>
 								</div>
 							</div>
 						</form>
