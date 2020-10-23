@@ -78,10 +78,27 @@ function writeSubmit() {
 	var contextPath = getContextPath();
 	var obj = new Object();
 	var form = document.querySelector("form");
-    obj.record = form;
 	
+	var type = $("input[name=type]").val();
+	var homePlayer = $("input[name=homePlayer]").val();
+	var awayPlayer = $("input[name=awayPlayer]").val();
+	var map = $("input[name=map]").val();
+	var replayFile = $("input[name=replayFile]").val();
+	var matchDate = $("input[name=matchDate]").val();
+	var lapTime = $("input[name=lapTime]").val();
+	var winner = $("input[name=winner]").val();
+	
+	obj.type = type;
+    obj.homePlayer = homePlayer;
+    obj.awayPlayer = awayPlayer;
+    obj.map = map;
+    obj.replayFile = replayFile;
+    obj.matchDate = matchDate;
+    obj.lapTime = lapTime;
+    obj.winner = winner;
+		
     $.ajax({
-        url: contextPath + '/writeRecord',
+        url: contextPath + '/writeMatch',
         type: 'post',
         data: obj,
         success: function(data) {
@@ -110,36 +127,6 @@ function displayFail() {
 	div2.setAttribute("class", "col-sm-12 col-md-12");
 	p.textContent = "오류가 발생하였습니다. 다시 시도해주세요.(ㅠㅠ)"
 }
-
-
-
-function drawInfo(player, playerDiv) {
-	var infoDiv = document.createElement('div');
-	var ul = document.createElement('ul');
-	infoDiv.setAttribute("class", "col-sm-2 col-md-2");
-	var titleArr = ['소속팀', '주종족', '총 스코어'];
-	
-	for(var i=0; i<3; i++) {
-		var li = document.createElement('li');
-		var title = document.createElement('div');
-		var item = document.createElement('div');
-		
-		title.setAttribute("class", "title");
-		title.textContent = titleArr[i];
-		
-		item.setAttribute("class", "title");
-		if(i == 0) item.textContent = player['team'];
-		if(i == 1) item.textContent = player['tribe'];
-		if(i == 2) item.textContent = '(개인) ' + player['win'] + '승 ' + player['lose'] + '패';
-			
-		li.appendChild(title);
-		li.appendChild(item);
-		ul.appendChild(li);
-	}
-	infoDiv.appendChild(ul);
-	playerDiv.appendChild(infoDiv);
-}
-
 
 
 
@@ -235,10 +222,10 @@ function drawInfo(player, playerDiv) {
 									
 									<label class="col-sm-2 control-label">승리팀</label>
 									<label class="col-sm-2 radio-inline">
-										<input type="radio" name="inlineRadioOptions" id="type_home" value="0"> 홈팀
+										<input type="radio" name="winner" id="type_home" value="0"> 홈팀
 									</label>
 									<label class="col-sm-2 radio-inline">
-										<input type="radio" name="inlineRadioOptions" id="type_away" value="1"> 어웨이팀
+										<input type="radio" name="winner" id="type_away" value="1"> 어웨이팀
 									</label>
 								</div>
 								<br/>

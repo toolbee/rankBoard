@@ -81,9 +81,9 @@ public class BoardControllerRest {
     }
 	
 	
-	@RequestMapping(value = "/writeRecord", method = RequestMethod.POST)
+	@RequestMapping(value = "/writeMatch", method = RequestMethod.POST)
     @ResponseBody
-    public void writeRecord(@RequestParam Model model) throws Exception {
+    public void writeMatch(@RequestParam Model model) throws Exception {
 		
 		MatchRecord record = new MatchRecord();
 		Map<?,?> map = model.asMap();
