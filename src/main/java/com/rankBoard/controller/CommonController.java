@@ -14,5 +14,4 @@ public class CommonController {
 		
         return "html/record/listLayout.html";
     }
-	
 }
