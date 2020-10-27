@@ -79,11 +79,9 @@ function writeSubmit() {
 	var obj = new Object();
 	var form = document.querySelector("form");
 	
-	var input = $(".playerInput").children(); 
-	
 	var type = $("input[name=type]").val();
-	var homePlayer = $("input[name=homePlayer]").val();
-	var awayPlayer = $("input[name=awayPlayer]").val();
+	var homePlayer = $("input[name=homePlayer]");
+	var awayPlayer = $("input[name=awayPlayer]");
 	var map = $("input[name=map]").val();
 	var replayFile = $("input[name=replayFile]").val();
 	var matchDate = $("input[name=matchDate]").val();
