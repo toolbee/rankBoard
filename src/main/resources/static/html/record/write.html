@@ -77,7 +77,7 @@ $(document).ready(function() {
 function writeSubmit() {
 	var contextPath = getContextPath();
 	var obj = new Object();
-	var form = document.querySelector("form");
+	//var form = document.querySelector("form");
 	
 	var type = $("input[name=type]").val();
 	var homePlayer = $("input[name=homePlayer]");
@@ -88,9 +88,20 @@ function writeSubmit() {
 	var lapTime = $("input[name=lapTime]").val();
 	var winner = $("input[name=winner]").val();
 	
+	var homePlayers = new Array();
+	var awayPlayers = new Array();
+	
+	for(var i=0; i<4; i++) {
+		if(homePlayer[i].val() != "" || homePlayer[i].val() != null) {
+			homePlayers.put(homePlayer[i].val());
+		}
+		if(awayPlayer[i].val() != "" || awayPlayer[i].val() != null) {
+			awayPlayers.put(awayPlayer[i].val());
+		}
+	}
 	obj.type = type;
-    obj.homePlayer = homePlayer;
-    obj.awayPlayer = awayPlayer;
+    obj.homePlayer = homePlayers;
+    obj.awayPlayer = awayPlayers;
     obj.map = map;
     obj.replayFile = replayFile;
     obj.matchDate = matchDate;
@@ -102,10 +113,10 @@ function writeSubmit() {
         type: 'post',
         data: obj,
         success: function(data) {
-       		location.href = contextPath + 'list' 
+       		//location.href = contextPath + 'list' 
         },
         error: function() {
-        	displayFail();
+        	//displayFail();
         }
     });
 }
@@ -142,7 +153,7 @@ function displayFail() {
 					<section>
 						<h2>매치 입력하기</h2>
 						
-						<form name="record_form" id="record_form" method="post" class="form-horizontal">
+						<form name="record_form" id="record_form" class="form-horizontal">
 							<div class="form-group">
 								<label class="col-sm-2 control-label">매치유형</label>
 								<label class="col-sm-2 radio-inline">

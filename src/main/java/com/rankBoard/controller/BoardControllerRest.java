@@ -83,10 +83,10 @@ public class BoardControllerRest {
 	
 	@RequestMapping(value = "/writeMatch", method = RequestMethod.POST)
     @ResponseBody
-    public void writeMatch(@RequestParam Model model) throws Exception {
+    public void writeMatch(@RequestParam("obj") Map<?,?> map) throws Exception {
 		
 		MatchRecord record = new MatchRecord();
-		Map<?,?> map = model.asMap();
+		//Map<?,?> map = model.asMap();
 		
 		@SuppressWarnings("unchecked")
 		Set<String> keys = (Set<String>) map.keySet();
