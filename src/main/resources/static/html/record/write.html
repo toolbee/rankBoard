@@ -92,11 +92,11 @@ function writeSubmit() {
 	var awayPlayers = new Array();
 	
 	for(var i=0; i<4; i++) {
-		if(homePlayer[i].val() != "" || homePlayer[i].val() != null) {
-			homePlayers.put(homePlayer[i].val());
+		if(homePlayer[i].value != "" || homePlayer[i].value != null) {
+			homePlayers.push(homePlayer[i].value);
 		}
-		if(awayPlayer[i].val() != "" || awayPlayer[i].val() != null) {
-			awayPlayers.put(awayPlayer[i].val());
+		if(awayPlayer[i].value != "" || awayPlayer[i].value != null) {
+			awayPlayers.push(awayPlayer[i].value);
 		}
 	}
 	obj.type = type;

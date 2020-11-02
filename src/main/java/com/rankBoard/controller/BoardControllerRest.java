@@ -1,5 +1,6 @@
 package com.rankBoard.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -83,15 +84,35 @@ public class BoardControllerRest {
 	
 	@RequestMapping(value = "/writeMatch", method = RequestMethod.POST)
     @ResponseBody
-    public void writeMatch(@RequestParam("obj") Map<?,?> map) throws Exception {
+    public void writeMatch(@RequestParam HashMap<?,?> map) throws Exception {
 		
 		MatchRecord record = new MatchRecord();
 		//Map<?,?> map = model.asMap();
 		
+		//팀 ID 조회
+		//homePlayer[]
+		//awayPlayer[]
+		String homeTeamId = "";
+		String awayTeamId = "";
+		
+		//파일 저장 및 ID 추출
+		//replayFile
+		
 		@SuppressWarnings("unchecked")
 		Set<String> keys = (Set<String>) map.keySet();
+		record.setType((String) map.get("type"));
+		record.setHomeTeamId("");
+		record.setAwayTeamId("");
+		record.setReplayFileId("");
+		record.setMatchDate((String) map.get("matchDate"));
+		record.setLapTime((String) map.get("lapTime"));
+		record.setWinner((String) map.get("winner"));
 		
-		
+		if(homeTeamId.equals((String) map.get("winner"))) {
+			record.setLoser(awayTeamId);
+		} else {
+			record.setLoser(homeTeamId);
+		}
 		
 		keys.forEach(key -> System.out.println(key));
 		
