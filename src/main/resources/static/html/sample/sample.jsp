@@ -13,5 +13,16 @@
 	out.println(date);
 	
 %>
+<br><br>
+<!-- <form action="TestServlet" method="post">
+	<input type="radio" name="gender" value="남자">남자
+	<input type="radio" name="gender" value="여자">여자
+	<br>
+	<input type="text" name="phone" size=20>
+	<br><br>
+	<input type="submit" value="확인">
+
+</form> -->
+
 </body>
 </html>

@@ -14,4 +14,11 @@ public class CommonController {
 		
         return "html/record/listLayout.html";
     }
+	
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String testHomework(Model model) {
+		
+        return "html/sample/sample.jsp";
+    }
 }
